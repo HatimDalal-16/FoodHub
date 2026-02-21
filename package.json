@@ -1,0 +1,21 @@
+{
+  "name": "foodhub",
+  "version": "1.0.0",
+  "description": "FoodHub V2 Homepage",
+  "keywords": [],
+  "homepage": "https://github.com/HatimDalal-16/FoodHubV2#readme",
+  "bugs": {
+    "url": "https://github.com/HatimDalal-16/FoodHubV2/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HatimDalal-16/FoodHubV2.git"
+  },
+  "license": "ISC",
+  "author": "HatimDalal",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
