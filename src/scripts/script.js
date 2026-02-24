@@ -42,3 +42,32 @@ tabs.forEach(tab => {
         }, 300); // match transition duration
     });
 });
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Set initial off-screen positions
+gsap.set(".vision-left", { x: "-110vw" });
+gsap.set(".vision-right", { x: "110vw" });
+
+// Animate in on scroll
+gsap.to(".vision-left", {
+  x: 0,
+  ease: "power3.out",
+  scrollTrigger: {
+    trigger: ".vision-wrap",
+    start: "top 80%",   // when top of vision block hits 80% down viewport
+    end: "top 30%",     // fully in by 30%
+    scrub: 1,           // ties to scroll position (remove for snap animation)
+  }
+});
+
+gsap.to(".vision-right", {
+  x: 0,
+  ease: "power3.out",
+  scrollTrigger: {
+    trigger: ".vision-wrap",
+    start: "top 80%",
+    end: "top 30%",
+    scrub: 1,
+  }
+});
