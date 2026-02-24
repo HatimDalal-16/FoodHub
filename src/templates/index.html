@@ -2,13 +2,100 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    @@include("../includes/header/head.html")
 </head>
 
 <body dir="ltr">
+    @@include("../includes/header/header.html")
+    <main>
+        <section>
+            <div class="container">
+                <div class="relative overflow-hidden">
+                    <video autoplay muted loop playsinline aria-hidden="true"
+                        class="absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-500 ease-in-out">
+                        <source src="assets/hero.mp4" type="video/mp4" />
+                    </video>
 
+                    <!-- Overlay: Ensures text remains readable over the video -->
+                    <div class="absolute inset-0 bg-black/40 z-10"></div>
+
+                    <!-- Content: Placed inside container, elevated above video and overlay -->
+                    <div class="relative z-20 text-white xl:px-11.5 pt-[11.688rem] lg:pt-20">
+                        <div class="xl:px-11.5 flex flex-col pt-22">
+                            <h1
+                                class="text-5xl md:text-7xl leading-[1.13] font-semibold uppercase max-w-180 lg:mb-10 order-1">
+                                Built
+                                for Trade Design for Growth</h1>
+                            <p
+                                class="text-base lg:text-2xl font-normal max-lg:mt-1.5 lg:max-w-90 lg:mt-35.5 lg:ml-150 xl:ml-224.5 order-2 lg:order-3">
+                                The Abu Dhabi Food Hub – KEZAD is being developed as an ecosystem for trading of all
+                                food
+                                categories
+                            </p>
+                            <div class="order-3 lg:order-2 max-lg:mt-10">
+                                @@include("../includes/components/helpers/button/button-light.html", {
+                                "button": {
+                                "href": "#",
+                                "text": "Build with Us"
+                                }
+                                })
+                            </div>
+                        </div>
+                        <div class="mt-12 border-t border-gray-300">
+                            <div class="flex gap-14.5 [&_p]:text-sm [&_p]:font-normal ">
+                                <div data-video="hero.mp4"
+                                    class="tab flex items-center cursor-pointer border-t-2 border-transparent transition-colors duration-200 hover:border-primary-glowgreen max-w-62.5 gap-6 py-4.5 -mt-[2px] rounded-e-xs text-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor"
+                                        viewBox="0 0 256 256">
+                                        <path
+                                            d="M176,72a71.5,71.5,0,0,0-7.76.43,91.77,91.77,0,0,0-21.62-25.11C108.78,16.79,57.05,23.77,54.87,24.08a8,8,0,0,0-3.31,14.58c17.5,11.66,25.51,31,28.85,49.74A72,72,0,1,0,142,207.5,72,72,0,1,0,176,72ZM76,39.37c16.67.72,41.24,4.78,60.64,20.48a75.28,75.28,0,0,1,15,16.4A72.2,72.2,0,0,0,121.9,96.5a71.46,71.46,0,0,0-25.23-8C93.54,68.59,86.56,52,76,39.37ZM88,216a56,56,0,0,1-5.76-111.7,176.49,176.49,0,0,1-1,31.08c-7.58-1.43-11.35-4.85-11.55-5a8,8,0,0,0-11.32,11.32C59.4,142.71,69.2,152,87.92,152h.25c18.66-.05,28.43-9.28,29.49-10.33a8,8,0,0,0-11.32-11.32,22.31,22.31,0,0,1-8.93,4.44A190.36,190.36,0,0,0,98.34,105,56,56,0,0,1,88,216Zm57-99.89a72.27,72.27,0,0,0-9.82-10.42,56.15,56.15,0,0,1,24.22-15.16A110.84,110.84,0,0,1,167,118.88c-6.09-1.6-9.16-4.37-9.33-4.54A8,8,0,0,0,145,116.11ZM176,200a55.76,55.76,0,0,1-24.69-5.73,71.83,71.83,0,0,0,2.5-63.42A47.47,47.47,0,0,0,175.67,136H176c18.77,0,28.6-9.28,29.66-10.34a8,8,0,0,0-11.32-11.32c-.19.19-3.84,3.49-11.15,5A131.66,131.66,0,0,0,175.7,88h.3a56,56,0,0,1,0,112Z">
+                                        </path>
+                                    </svg>
+                                    <p>An Integrated Food Trade & Logistics Hub in Abu Dhabi</p>
+                                </div>
+                                <div data-video="hero-2.mp4"
+                                    class="tab flex items-center cursor-pointer border-t-2 border-transparent transition-colors duration-200 hover:border-primary-glowgreen max-w-62.5 gap-6 py-4.5 -mt-[2px] rounded-e-xs text-white/50">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor"
+                                        viewBox="0 0 256 256">
+                                        <path
+                                            d="M236.4,70.65,130.2,40.31a8,8,0,0,0-3.33-.23L21.74,55.1A16.08,16.08,0,0,0,8,70.94V185.06A16.08,16.08,0,0,0,21.74,200.9l105.13,15A8.47,8.47,0,0,0,128,216a7.85,7.85,0,0,0,2.2-.31l106.2-30.34A16.07,16.07,0,0,0,248,170V86A16.07,16.07,0,0,0,236.4,70.65ZM96,120H80V62.94l40-5.72V198.78l-40-5.72V136H96a8,8,0,0,0,0-16ZM24,70.94l40-5.72V120H48a8,8,0,0,0,0,16H64v54.78l-40-5.72ZM136,197.39V58.61L232,86V170Z">
+                                        </path>
+                                    </svg>
+                                    <p>Powering efficient trade across borders</p>
+                                </div>
+                                <div data-video="hero-3.mp4"
+                                    class="tab flex items-center cursor-pointer border-t-2 border-transparent transition-colors duration-200 hover:border-primary-glowgreen max-w-62.5 gap-6 py-4.5 -mt-[2px] rounded-e-xs text-white/50">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor"
+                                        viewBox="0 0 256 256">
+                                        <path
+                                            d="M240,184h-8V57.9l9.67-2.08a8,8,0,1,0-3.35-15.64l-224,48A8,8,0,0,0,16,104a8.16,8.16,0,0,0,1.69-.18L24,102.47V184H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM40,99,216,61.33V184H192V128a8,8,0,0,0-8-8H72a8,8,0,0,0-8,8v56H40Zm136,53H80V136h96ZM80,168h96v16H80Z">
+                                        </path>
+                                    </svg>
+                                    <p>Finest wholesale food trading & logistics platform</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between [&span]:text-xxs [&span]:font-semibold [&span]:text-color-light mt-6.5"
+                            aria-label="Section Navigation">
+                            <span>(01)</span>
+                            <span class="uppercase">@About Us</span>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi nam sed perferendis, architecto
+            reiciendis eaque. Voluptates magni illo nam aspernatur quisquam dignissimos commodi molestiae, accusantium
+            voluptatum iusto, necessitatibus cupiditate nihil?</p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi incidunt, enim eum unde quos voluptatibus
+            possimus, quisquam est odio, facere reiciendis optio temporibus! Iusto, iure omnis saepe debitis numquam
+            eligendi!</p>
+    </footer>
 </body>
 
 </html>

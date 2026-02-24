@@ -1,0 +1,34 @@
+require("../styles/styles.css");
+console.log("JS reloaded at", Date.now());
+console.log("force rebuild", Date.now()); 
+
+const tabs = document.querySelectorAll('.tab');
+const video = document.querySelector('video');
+const videoSource = document.querySelector('video source');
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Skip if this tab is already active (has full white text)
+        if (tab.classList.contains('text-white')) return;
+
+        // Set all tabs to semi-transparent white
+        tabs.forEach(t => {
+            t.classList.remove('text-white');
+            t.classList.add('text-white/50');
+        });
+
+        // Make clicked tab full white
+        tab.classList.add('text-white');
+        tab.classList.remove('text-white/50');
+
+        // Fade out video
+        video.classList.add('opacity-0');
+
+        // After fade, change source and fade in
+        setTimeout(() => {
+            videoSource.src = `assets/${tab.dataset.video}`;
+            video.load();
+            video.play().catch(e => console.log('Autoplay prevented'));
+            video.classList.remove('opacity-0');
+        }, 300); // match transition duration
+    });
+});

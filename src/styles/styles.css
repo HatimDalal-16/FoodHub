@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@source "../templates/**/*.html";
+@source "../includes/**/*.html";
+
+@import url("https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap");
+
+@theme {
+  --font-heading: "Exo", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --color-primary-deepblue: #283a57;
+  --color-primary-lightblue: #14b8e7;
+  --color-primary-green: #709936;
+  --color-primary-glowgreen: #8cd623;
+  --color-primary-yellow: #d4ac39;
+  --color-primary-lightgrey: #f5f6f6;
+
+  --text-color-light: #ffffff;
+
+  --text-xxs: 0.688rem;
+}
+
+@layer base {
+  body {
+    @apply font-body;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply max-w-[1536px] px-4 md:px-8 2xl:px-12 mx-auto w-full;
+  }
+}
