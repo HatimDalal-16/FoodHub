@@ -1,4 +1,14 @@
 require("../styles/styles.css");
+const Headroom = require("headroom.js");
+gsap.registerPlugin(ScrollTrigger);
+
+// Initialize Headroom
+const header = document.querySelector("#header");
+if (header) {
+    const headroom = new Headroom(header);
+    headroom.init();
+}
+
 console.log("JS reloaded at", Date.now());
 console.log("force rebuild", Date.now()); 
 

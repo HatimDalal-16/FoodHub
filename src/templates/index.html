@@ -10,7 +10,7 @@
     <main>
         <section>
             <div class="container">
-                <div class="relative overflow-hidden">
+                <div class="relative min-h-[200vh] overflow-hidden">
                     <video autoplay muted loop playsinline aria-hidden="true"
                         class="absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-500 ease-in-out">
                         <source src="assets/hero.mp4" type="video/mp4" />
@@ -75,20 +75,24 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flex justify-between [&span]:text-xxs [&span]:font-semibold [&span]:text-color-light mt-6.5"
+                        <div class="flex justify-between font-semibold text-light mt-6.5"
                             aria-label="Section Navigation">
-                            <span>(01)</span>
-                            <span class="uppercase">@About Us</span>
+                            <p class="text-xxs">(01)</p>
+                            <p class="uppercase text-xxs">@About Us</p>
                         </div>
-                        <div>
-
+                        <div
+                            class="vision-wrap relative z-20 flex items-center justify-center min-h-screen overflow-hidden">
+                            <h2 class="vision-heading flex flex-col text-[8rem] font-bold">
+                                <span class="vision-left">Progressing the</span>
+                                <span class="vision-right">Vision of Abu Dhabi</span>
+                            </h2>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-    <footer>
+    <footer class="container">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi nam sed perferendis, architecto
             reiciendis eaque. Voluptates magni illo nam aspernatur quisquam dignissimos commodi molestiae, accusantium
             voluptatum iusto, necessitatibus cupiditate nihil?</p>
