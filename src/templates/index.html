@@ -21,7 +21,7 @@
 
                     <!-- Content: Placed inside container, elevated above video and overlay -->
                     <div class="relative z-20 text-white xl:px-11.5 pt-[11.688rem] lg:pt-20 lg:pb-23">
-                        <div class="xl:px-11.5 flex flex-col pt-22">
+                        <div class="flex flex-col pt-22">
                             <h1
                                 class="text-5xl md:text-7xl leading-[1.13] font-semibold uppercase max-w-180 lg:mb-10 order-1">
                                 Built
@@ -75,10 +75,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flex justify-between font-semibold text-light mt-6.5"
-                            aria-label="Section Navigation">
-                            <p class="text-xxs">(01)</p>
-                            <p class="uppercase text-xxs">@About Us</p>
+                        <div>
+                            @@include("../includes/components/helpers/section-nav.html", {
+                            "number": "(01)",
+                            "title": "&#64;About Us"
+                            })
                         </div>
                         <div class="vision-wrap w-full mt-16">
                             <h2
@@ -107,8 +108,41 @@
                 </div>
             </div>
         </section>
-        <section>
 
+        <section>
+            <div class="container">
+                <div class="2xl:px-11.5">
+                    <div class="mt-8">
+                        @@include("../includes/components/helpers/section-nav.html", {
+                        "number": "(02)",
+                        "title": "Market &#64; the hub"
+                        })
+                    </div>
+                    <div class="mt-[6.563rem]">
+                        <div class="flex gap-3 items-center">
+                            <svg class="shrink-0" width="32" height="20" viewBox="0 0 32 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M32 15.5556C26.1818 21.4815 16.7273 21.4815 10.9091 15.5556L0 4.44444C5.81819 -1.48148 15.2727 -1.48148 21.0909 4.44444L32 15.5556Z"
+                                    fill="#283A57" />
+                            </svg>
+                            <p class="text-[0.895rem] max-w-82 uppercase">Ready to see the potential of one-stop-shop
+                                integrated
+                                ecosystem</p>
+                        </div>
+                        <div class="mt-[4.063rem] lg:mt-[4.063rem]">
+                            <h2 class="text-primary-deepblue font-extrabold text-[4.25rem] leading-[1.15]"><span
+                                    class="text-primary-lightblue">Abu Dhabi
+                                    Food Hub</span> is built
+                                to
+                                reshape the
+                                global food
+                                trade & logistics landscape.
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
     <footer class="container">
