@@ -17,7 +17,8 @@
 
   --color-light: #1f1f1fa8;
 
-  --font-size-xxs: 0.688rem/1.25rem;
+  --text-xxs: 0.688rem;
+  --text-xxs--line-height: 1.25rem;
 }
 
 @layer base {
@@ -39,7 +40,6 @@
     @apply max-w-[1536px] px-4 md:px-8 2xl:px-12 mx-auto w-full;
   }
 
-  /* Headroom.js Styles */
   .headroom {
     will-change: transform;
     transition:
@@ -56,18 +56,13 @@
   }
 
   .headroom--not-top {
-    @apply fixed text-black;
+    @apply fixed bg-white shadow-lg text-black;
   }
 
-  .headroom--not-top .group {
-    @apply bg-white shadow-lg text-black;
-  }
-
-  /* Ensure logo changes when not at top */
-  .headroom--not-top .group img[src*="logo-light"] {
+  .headroom--not-top img[src*="logo-light"] {
     @apply hidden;
   }
-  .headroom--not-top .group img[src*="logo-color"] {
+  .headroom--not-top img[src*="logo-color"] {
     @apply block;
   }
 }

@@ -9,18 +9,18 @@
     @@include("../includes/header/header.html")
     <main>
         <section>
-            <div class="container">
-                <div class="relative overflow-hidden">
-                    <video autoplay muted loop playsinline aria-hidden="true"
-                        class="absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-500 ease-in-out">
-                        <source src="assets/hero.mp4" type="video/mp4" />
-                    </video>
+            <div class="relative overflow-hidden">
+                <video autoplay muted loop playsinline aria-hidden="true"
+                    class="absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-500 ease-in-out">
+                    <source src="assets/hero.mp4" type="video/mp4" />
+                </video>
 
-                    <!-- Overlay: Ensures text remains readable over the video -->
-                    <div class="absolute inset-0 bg-black/40 z-10"></div>
+                <!-- Overlay: Ensures text remains readable over the video -->
+                <div class="absolute inset-0 bg-black/40 z-10"></div>
 
-                    <!-- Content: Placed inside container, elevated above video and overlay -->
-                    <div class="relative z-20 text-white xl:px-11.5 pt-[11.688rem] lg:pt-20 lg:pb-23">
+                <!-- Content: Placed inside container, elevated above video and overlay -->
+                <div class="container relative z-20 text-white pt-[11.688rem] lg:pt-20 lg:pb-23">
+                    <div class="xl:px-11.5">
                         <div class="flex flex-col pt-22">
                             <h1
                                 class="text-5xl md:text-7xl leading-[1.13] font-semibold uppercase max-w-180 lg:mb-10 order-1">
@@ -131,14 +131,23 @@
                                 ecosystem</p>
                         </div>
                         <div class="mt-[4.063rem] lg:mt-[4.063rem]">
-                            <h2 class="text-primary-deepblue font-extrabold text-[4.25rem] leading-[1.15]"><span
-                                    class="text-primary-lightblue">Abu Dhabi
+                            <h2
+                                class="text-primary-deepblue font-extrabold text-4xl md:text-6xl lg:text-[4.25rem] leading-[1.15]">
+                                <span class="text-primary-lightblue">Abu Dhabi
                                     Food Hub</span> is built
                                 to
                                 reshape the
                                 global food
                                 trade & logistics landscape.
                             </h2>
+                            <div>
+                                @@include("../includes/components/helpers/links/link.html", {
+                                "link": {
+                                "href": "#",
+                                "text": "More About ADFH"
+                                }
+                                })
+                            </div>
                         </div>
                     </div>
                 </div>
