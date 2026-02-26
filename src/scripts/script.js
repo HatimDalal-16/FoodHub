@@ -43,6 +43,16 @@ tabs.forEach(tab => {
     });
 });
 
+// Rotate SVG on hover using GSAP
+document.querySelectorAll('.rotate-trigger').forEach(trigger => {
+    trigger.addEventListener('mouseenter', () => {
+        gsap.to(trigger, { rotation: 180, duration: 1, ease: 'power2.inOut' });
+    });
+    trigger.addEventListener('mouseleave', () => {
+        gsap.to(trigger, { rotation: 0, duration: 1, ease: 'power2.inOut' });
+    });
+});
+
 gsap.registerPlugin(ScrollTrigger);
 
 // Set initial off-screen positions

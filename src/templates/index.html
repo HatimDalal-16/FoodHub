@@ -120,8 +120,8 @@
                     </div>
                     <div class="mt-[6.563rem]">
                         <div class="flex gap-3 items-center">
-                            <svg class="shrink-0" width="32" height="20" viewBox="0 0 32 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
+                            <svg class="shrink-0 rotate-svg rotate-trigger" width="32" height="20" viewBox="0 0 32 20"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M32 15.5556C26.1818 21.4815 16.7273 21.4815 10.9091 15.5556L0 4.44444C5.81819 -1.48148 15.2727 -1.48148 21.0909 4.44444L32 15.5556Z"
                                     fill="#283A57" />
@@ -130,9 +130,10 @@
                                 integrated
                                 ecosystem</p>
                         </div>
-                        <div class="mt-[4.063rem] lg:mt-[4.063rem]">
+                        <div
+                            class="mt-[3.219rem] lg:mt-[4.063rem] flex flex-col lg:flex-row items-end gap-16.5 justify-between">
                             <h2
-                                class="text-primary-deepblue font-extrabold text-4xl md:text-6xl lg:text-[4.25rem] leading-[1.15]">
+                                class="max-w-270.5 text-primary-deepblue font-extrabold text-4xl md:text-6xl lg:text-[4.25rem] leading-[1.15]">
                                 <span class="text-primary-lightblue">Abu Dhabi
                                     Food Hub</span> is built
                                 to
@@ -140,7 +141,7 @@
                                 global food
                                 trade & logistics landscape.
                             </h2>
-                            <div>
+                            <div class="shrink-0">
                                 @@include("../includes/components/helpers/links/link.html", {
                                 "link": {
                                 "href": "#",
@@ -148,6 +149,11 @@
                                 }
                                 })
                             </div>
+                        </div>
+                        <div class="mt-13.5">
+                            @@include("../includes/components/helpers/service-card.html", {
+
+                            })
                         </div>
                     </div>
                 </div>
