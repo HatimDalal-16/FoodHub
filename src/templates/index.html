@@ -225,6 +225,114 @@
                 distributors, and sellers, it delivers exceptional value
               </p>
             </div>
+            <div class="small-card-slider mt-14.5 overflow-hidden">
+              <!-- Standard Card -->
+              <div>
+                <!-- prettier-ignore -->
+                @@include("../includes/components/helpers/small-card.html", { "id": "ecosystem", "title": "Integrated Ecosystem", "description": "The Abu Dhabi Food Hub – KEZAD is being developed as an ecosystem for trading of all food categories.", "imgSrc": "assets/gear.svg" })
+              </div>
+              <!-- Edge Case: Long Header -->
+              <div>
+                <!-- prettier-ignore -->
+                @@include("../includes/components/helpers/small-card.html", { "id": "long-header", "title": "A Very Long Header That Should Test Wrapping Behavior", "description": "This card tests how a long header affects the layout and the expansion logic.", "imgSrc": "assets/gear.svg" })
+              </div>
+              <!-- Edge Case: Long Description -->
+              <div>
+                <!-- prettier-ignore -->
+                @@include("../includes/components/helpers/small-card.html", { "id": "long-desc", "title": "Many Details", "description": "This description is much longer than usual to ensure that the expansion container can handle more content without breaking the 30rem max-height hover constraint or the general layout flow.", "imgSrc": "assets/gear.svg" })
+              </div>
+              <div>
+                <!-- prettier-ignore -->
+                @@include("../includes/components/helpers/small-card.html", { "id": "long-desc", "title": "Many Details", "description": "This description is much longer than usual to ensure that the expansion container can handle more content without breaking the 30rem max-height hover constraint or the general layout flow.", "imgSrc": "assets/gear.svg" })
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="relative overflow-hidden py-24 lg:py-36 min-h-126 flex items-center" aria-labelledby="scale-section-title">
+        <!-- Video Background -->
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          class="absolute inset-0 w-full h-full object-cover z-0"
+          aria-hidden="true"
+        >
+          <source src="assets/scale-video.mp4" type="video/mp4" />
+          <!-- Video Fallback -->
+          <p>Your browser does not support the video tag. However, you can still experience our comprehensive food trade zones in the Middle East.</p>
+        </video>
+
+        <!-- Overlay for readability -->
+        <div class="absolute inset-0 bg-black/40 z-10"></div>
+
+        <div class="max-w-116 container relative z-20 flex flex-col items-center justify-center text-center text-white">
+            <h2 id="scale-section-title" class="font-light text-4xl md:text-[3.5rem] leading-tight max-w-3xl">
+              Scale Your Supply & <br> Production
+            </h2>
+            <p class="mt-6 text-lg md:text-xl font-normal max-w-2xl opacity-90">
+              Step into one of the most comprehensive food trade zones in the Middle East. 
+              An ecosystem designed to facilitate wholesale trade at scale.
+            </p>
+            <div class="mt-7.5 flex flex-wrap justify-center gap-4">
+                <div>
+                  @@include("../includes/components/helpers/button/button-light.html", {
+                  "button": { "href": "#", "text": "Register now" } })
+                </div>
+                <div>
+                  @@include("../includes/components/helpers/button/button-black.html", {
+                  "button": { "href": "#", "text": "Learn more" } })
+                </div>
+            </div>
+        </div>
+      </section>
+      <section>
+        <!-- <div class="container mt-[4.906rem]"> -->
+        <div class="container mt-[4.906rem]">
+          <!-- <div class="2xl:px-11.5"> -->
+          <div>
+            <div>
+              @@include("../includes/components/helpers/section-nav.html",
+              {"number": "(05)", "title": "Spaces"})
+            </div>
+            <div class="mt-15">
+              <h2 class="text-[3.625rem] font-extrabold text-primary-deepblue leading-none">
+                Designed for you.<br><span class="text-primary-lightblue">Built to evolve</span> with you
+              </h2>
+              <p class="max-w-[42.313rem] mt-10 text-[1.375rem] font-medium leading-none">
+                Step into one of the most comprehensive food trade zones in the Middle East. ecosystem to facilitate wholesale trade and logistics across all food categories.
+              </p>
+            </div>
+            <div class="mt-20">
+              <div class="w-full flex flex-col" role="presentation">
+                @@include("../includes/components/helpers/accordion.html", {
+                  "item_id": "1",
+                  "item_number": "01",
+                  "item_title": "Complementary Activity Zone (CAZ)",
+                  "item_description": "The 3.3 square kilometres project is a joint venture between Abu Dhabi Ports Group and Ghassan Aboud Group. An ecosystem designed to facilitate wholesale trade at scale.",
+                  "item_link_text": "More about ADFH",
+                  "item_link_href": "#"
+                })
+
+                @@include("../includes/components/helpers/accordion.html", {
+                  "item_id": "2",
+                  "item_number": "02",
+                  "item_title": "Farmers market",
+                  "item_description": "Finest wholesale food trading & logistics platform Step into one of the most comprehensive food trade zones in the Middle East. ecosystem to facilitate wholesale trade and logistics across all food categories.",
+                  "item_link_text": "More about ADFH",
+                  "item_link_href": "#"
+                })
+
+                @@include("../includes/components/helpers/accordion.html", {
+                  "item_id": "3",
+                  "item_number": "03",
+                  "item_title": "Food Studio",
+                  "item_description": "Modular and flexible units designed for processing, packing, and value-added services within the ecosystem.",
+                  "item_link_text": "More about ADFH",
+                  "item_link_href": "#"
+                })
+              </div>
+            </div>
           </div>
         </div>
       </section>

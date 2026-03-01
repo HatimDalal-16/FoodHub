@@ -9,6 +9,7 @@
   --font-heading: "Exo", sans-serif;
   --font-body: "Inter", sans-serif;
   --color-primary-deepblue: #283a57;
+  --color-secondary-deepblue: #283a57a8;
   --color-primary-lightblue: #14b8e7;
   --color-primary-green: #709936;
   --color-primary-glowgreen: #8cd623;
@@ -68,10 +69,13 @@
   }
 
   /* Slick Slider Gutters */
-  .service-slider .slick-list {
+  .service-slider .slick-list,
+  .small-card-slider .slick-list {
     margin: 0 -0.78125rem;
   }
-  .service-slider .slick-slide > div {
+
+  .service-slider .slick-slide > div,
+  .small-card-slider .slick-slide > div {
     padding: 0 0.78125rem;
   }
 }

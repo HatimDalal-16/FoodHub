@@ -114,4 +114,84 @@ $(document).ready(function(){
             }
         ]
     });
+
+    $('.small-card-slider').slick({
+        dots: false,
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 4000,
+        speed: 1000,
+        arrows: false,
+        pauseOnHover: true,
+        pauseOnFocus: true,
+        draggable: true,
+        swipe: true,
+        touchMove: true,
+        responsive: [
+            {
+                breakpoint: 1280,
+                settings: {
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 640,
+                settings: {
+                    slidesToShow: 1
+                }
+            }
+        ]
+    });
+});
+
+// Accordion Logic
+document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+        const contentId = trigger.getAttribute('aria-controls');
+        const content = document.getElementById(contentId);
+        const group = trigger.closest('.w-full.flex.flex-col'); // Correct boundary for this accordion group
+
+        // Close other items in the same group
+        group.querySelectorAll('.accordion-trigger').forEach(otherTrigger => {
+            if (otherTrigger !== trigger && otherTrigger.getAttribute('aria-expanded') === 'true') {
+                otherTrigger.setAttribute('aria-expanded', 'false');
+                const otherContent = document.getElementById(otherTrigger.getAttribute('aria-controls'));
+                if (otherContent) {
+                    gsap.to(otherContent, {
+                        maxHeight: 0,
+                        opacity: 0,
+                        duration: 0.4,
+                        ease: "power2.inOut",
+                        onComplete: () => {
+                            otherContent.classList.add('invisible');
+                        }
+                    });
+                }
+            }
+        });
+
+        // Toggle the clicked item
+        if (isExpanded) {
+            trigger.setAttribute('aria-expanded', 'false');
+            gsap.to(content, {
+                maxHeight: 0,
+                opacity: 0,
+                duration: 0.4,
+                ease: "power2.inOut",
+                onComplete: () => {
+                    content.classList.add('invisible');
+                }
+            });
+        } else {
+            trigger.setAttribute('aria-expanded', 'true');
+            content.classList.remove('invisible');
+            gsap.fromTo(content, 
+                { maxHeight: 0, opacity: 0 },
+                { maxHeight: 1000, opacity: 1, duration: 0.6, ease: "power3.out" }
+            );
+        }
+    });
 });
