@@ -88,6 +88,7 @@ $(document).ready(function(){
         dots: false,
         infinite: true,
         slidesToShow: 3,
+        variableWidth: true,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 0,
@@ -99,26 +100,14 @@ $(document).ready(function(){
         draggable: true,
         swipe: true,
         touchMove: true,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2
-                }
-            },
-            {
-                breakpoint: 640,
-                settings: {
-                    slidesToShow: 1
-                }
-            }
-        ]
+       
     });
 
     $('.small-card-slider').slick({
         dots: false,
         infinite: true,
         slidesToShow: 4,
+        variableWidth: true,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 4000,
@@ -129,49 +118,60 @@ $(document).ready(function(){
         draggable: true,
         swipe: true,
         touchMove: true,
-        responsive: [
-            {
-                breakpoint: 1280,
-                settings: {
-                    slidesToShow: 2
-                }
-            },
-            {
-                breakpoint: 640,
-                settings: {
-                    slidesToShow: 1
-                }
-            }
-        ]
+    
+    });
+
+    // Initialize Slick Slider for News Cards
+    $('.news-card-slider').slick({
+        dots: false,
+        infinite: true,
+        slidesToScroll: 1,
+        variableWidth: true,
+        autoplay: true,
+        autoplaySpeed: 0,
+        speed: 9000,
+        cssEase: 'linear',
+        arrows: false,
+        pauseOnHover: true,
+        pauseOnFocus: true,
+        draggable: true,
+        swipe: true,
+        touchMove: true
     });
 });
 
 // Accordion Logic
-document.querySelectorAll('.accordion-trigger').forEach(trigger => {
-    trigger.addEventListener('click', () => {
+document.querySelectorAll('.accordion-item').forEach(item => {
+    const trigger = item.querySelector('.accordion-trigger');
+    const content = item.querySelector('.accordion-panel');
+
+    item.addEventListener('click', (e) => {
+        // Prevent collapse when clicking links (Industry standard safeguard)
+        if (e.target.closest('a')) return;
+
         const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-        const contentId = trigger.getAttribute('aria-controls');
-        const content = document.getElementById(contentId);
-        const group = trigger.closest('.w-full.flex.flex-col'); // Correct boundary for this accordion group
+        const group = item.closest('.w-full.flex.flex-col');
 
         // Close other items in the same group
-        group.querySelectorAll('.accordion-trigger').forEach(otherTrigger => {
-            if (otherTrigger !== trigger && otherTrigger.getAttribute('aria-expanded') === 'true') {
-                otherTrigger.setAttribute('aria-expanded', 'false');
-                const otherContent = document.getElementById(otherTrigger.getAttribute('aria-controls'));
-                if (otherContent) {
-                    gsap.to(otherContent, {
-                        maxHeight: 0,
-                        opacity: 0,
-                        duration: 0.4,
-                        ease: "power2.inOut",
-                        onComplete: () => {
-                            otherContent.classList.add('invisible');
-                        }
-                    });
+        if (group && !isExpanded) {
+            group.querySelectorAll('.accordion-trigger').forEach(otherTrigger => {
+                if (otherTrigger !== trigger && otherTrigger.getAttribute('aria-expanded') === 'true') {
+                    otherTrigger.setAttribute('aria-expanded', 'false');
+                    const otherContent = document.getElementById(otherTrigger.getAttribute('aria-controls'));
+                    if (otherContent) {
+                        gsap.to(otherContent, {
+                            maxHeight: 0,
+                            opacity: 0,
+                            duration: 0.4,
+                            ease: "power2.inOut",
+                            onComplete: () => {
+                                otherContent.classList.add('invisible');
+                            }
+                        });
+                    }
                 }
-            }
-        });
+            });
+        }
 
         // Toggle the clicked item
         if (isExpanded) {

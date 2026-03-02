@@ -69,13 +69,12 @@
   }
 
   /* Slick Slider Gutters */
-  .service-slider .slick-list,
-  .small-card-slider .slick-list {
-    margin: 0 -0.78125rem;
+  .service-slider .slick-slide {
+    margin: 0 12.5px;
   }
 
-  .service-slider .slick-slide > div,
-  .small-card-slider .slick-slide > div {
-    padding: 0 0.78125rem;
+  .small-card-slider .slick-slide,
+  .news-card-slider .slick-slide {
+    margin: 0 10px;
   }
 }

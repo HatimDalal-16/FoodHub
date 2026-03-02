@@ -336,6 +336,45 @@
           </div>
         </div>
       </section>
+      <section>
+        <div class="container mt-17.5">
+          <div>
+            @@include("../includes/components/helpers/section-nav.html",
+            {"number": "(06)", "title": "News & Media"})
+            <div class="mt-[4.438rem] md:mt-34.5 flex max-md:flex-col max-md:gap-[1.938rem] justify-between md:items-center">
+              <h2 class="text-[3.625rem] md:text-5xl font-extrabold text-primary-deepblue leading-[1.15]">
+                Newsroom
+              </h2>
+              <div class="flex justify-between max-md:h-[4.688rem]">
+                <p class="max-w-[11.813rem] font-medium text-sm leading-none self-start md:hidden">All about Abu Dhabi Food Hub in the News  & Media</p>
+                <div class="self-end">
+                  @@include("../includes/components/helpers/links/link-small.html", {
+                    "link": { "href": "#", "text": "View All news" }
+                  })
+                </div>
+              </div>
+            </div>
+            <div class="news-card-slider mt-17.5">
+              <div>
+                <!-- prettier-ignore -->
+                @@include("../includes/components/helpers/news-card.html", { "id": "news-1", "href": "#", "imgSrc": "assets/service-card/1.jpg", "imgAlt": "News image 1", "title": "Abu Dhabi Food Hub Breaks Ground on Expansion", "description": "The largest integrated food trade ecosystem in the Middle East enters its next phase of development." })
+              </div>
+              <div>
+                <!-- prettier-ignore -->
+                @@include("../includes/components/helpers/news-card.html", { "id": "news-2", "href": "#", "imgSrc": "assets/service-card/2.jpg", "imgAlt": "News image 2", "title": "New Cold Storage Facilities Announced", "description": "State-of-the-art cold chain infrastructure to support fresh produce and perishable goods logistics." })
+              </div>
+              <div>
+                <!-- prettier-ignore -->
+                @@include("../includes/components/helpers/news-card.html", { "id": "news-3", "href": "#", "imgSrc": "assets/service-card/3.jpg", "imgAlt": "News image 3", "title": "Global Trade Partners Join the Hub", "description": "Leading international food distributors sign agreements to establish operations within the hub." })
+              </div>
+              <div>
+                <!-- prettier-ignore -->
+                @@include("../includes/components/helpers/news-card.html", { "id": "news-4", "href": "#", "imgSrc": "assets/service-card/4.jpg", "imgAlt": "News image 4", "title": "Sustainability at the Core of ADFH Operations", "description": "Green initiatives and eco-friendly practices are embedded into every aspect of the food hub's design." })
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     <footer class="container">
       <p>
