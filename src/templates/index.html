@@ -257,16 +257,18 @@
         </div>
       </section>
 
-      <section class="bg-primary-deepblue mt-[7.688rem] relative overflow-hidden">
+      <section class="bg-primary-deepblue mt-36 lg:mt-[7.688rem] relative overflow-hidden">
         <div class="container">
           <div>
             @@include("../includes/components/helpers/section-nav.html",
             {"number": "(04)", "title": "Strategically located"})
           </div>
-          
-          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12 mt-12 lg:mt-16">
-            <!-- Left: Text Content -->
-            <div class="lg:max-w-[55%]">
+
+          <!-- Grid: 2 cols on lg (left content + right globe), single col on mobile -->
+          <div class="mt-[6.938rem] lg:mt-13.5 grid lg:grid-cols-[1fr_auto] lg:gap-x-12">
+
+            <!-- Title + Buttons — lg: col 1 row 1 -->
+            <div class="lg:col-start-1 lg:row-start-1">
               <h2 class="text-4xl lg:text-[3.625rem] leading-[1.15] font-extrabold text-primary-lightgrey max-w-165">
                 Strategically located. with world-class logistics connections
               </h2>
@@ -278,13 +280,14 @@
               </div>
             </div>
 
-            <!-- Right: Globe -->
-            <div class="lg:w-[42%] aspect-square max-w-[520px] w-full mx-auto lg:mx-0 lg:shrink-0 relative">
+            <!-- Globe — lg: col 2, spans both rows, nudged right -->
+            <div class="lg:col-start-2 lg:row-start-1 lg:row-span-2 aspect-square max-w-120 w-full mx-auto lg:mx-0 lg:shrink-0 relative order-2 lg:order-0 mt-10 lg:mt-0">
               <canvas id="globe-canvas" class="w-full h-full cursor-grab active:cursor-grabbing select-none" aria-label="Interactive wireframe globe"></canvas>
               <div id="globe-loading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(195,210,220,0.4);font-size:0.8rem;letter-spacing:0.12em;pointer-events:none">LOADING…</div>
             </div>
-            <!-- Text Content -->
-            <div class="flex flex-col gap-5 text-white max-w-[16.688rem] lg:max-w-72.5 pt-17.5 lg:pt-23">
+
+            <!-- Text Content — lg: col 1 row 2 | mobile: after globe -->
+            <div class="lg:col-start-1 lg:row-start-2 flex flex-col gap-5 text-white max-w-[16.688rem] lg:max-w-72.5 pt-17.5 lg:pt-23 order-3 lg:order-0 ml-auto mb-27.5">
                 <h3 class="font-body text-lg font-medium uppercase">Huge land for huge production</h3>
                 <p class="text-base font-medium leading-snug">Step into one of the most comprehensive food trade zones in the Middle East. ecosystem to facilitate wholesale trade and logistics across all food categories.</p>
                 @@include("../includes/components/helpers/links/link-small.html", {
@@ -426,9 +429,22 @@
       <div class="container flex flex-col lg:grid lg:grid-cols-[auto_1fr] lg:gap-x-32 lg:gap-y-[6.438rem]">
         <!-- 1. Logo -->
         <div class="shrink-0 order-1 lg:order-1">
-          <a href="/" aria-label="Go to home page">
-            <!-- Logo size is 181px by 49px as requested -->
-            <img src="assets/logo-light.svg" alt="FoodHub Logo" class="w-[181px] h-[49px] object-contain" width="181" height="49">
+          <a href="/" aria-label="Go to home page" class="group">
+            <!-- <img src="assets/logo-light.svg" alt="FoodHub Logo" class="w-[181px] h-[49px] object-contain" width="181" height="49"> -->
+            <img
+            src="assets/logo-light.svg"
+            alt="FoodHub Logo Light"
+            class="group-hover:hidden w-[11.313rem] h-[3.063rem] object-contain"
+            width="181"
+            height="49"
+          />
+          <img
+            src="assets/logo-color.svg"
+            alt="FoodHub Logo Color"
+            class="hidden group-hover:block w-[11.313rem] h-[3.063rem] object-contain"
+            width="181"
+            height="49"
+          />
           </a>
         </div>
 

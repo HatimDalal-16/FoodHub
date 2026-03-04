@@ -1,23 +1,25 @@
-<article
-  class="group w-[21.188rem] min-h-70 hover:max-h-120 py-7.5 px-6 text-white flex flex-col bg-secondary-deepblue hover:bg-primary-green transition-all duration-500 overflow-hidden cursor-pointer"
-  aria-labelledby="card-title-@@id"
->
-  <div class="flex justify-end items-start mb-10">
-    <img src="@@imgSrc" alt="" role="presentation" class="w-auto h-auto" />
-  </div>
-  <div class="mt-auto">
-    <h3 id="card-title-@@id" class="text-2.5xl font-bold leading-tight">
-      @@title
-    </h3>
-    <div
-      class="max-h-0 group-hover:max-h-60 transition-all duration-500 overflow-hidden"
-      aria-hidden="true"
-    >
-      <p
-        class="mt-6 text-base font-normal opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100"
-      >
-        @@description
-      </p>
+<div class="md:h-80 xl:h-100 flex flex-col justify-start">
+  <article
+    class="group w-[21.188rem] min-h-70 hover:max-h-120 py-7.5 px-6 text-white flex flex-col bg-secondary-deepblue hover:bg-primary-green transition-all duration-500 overflow-hidden rounded-xl cursor-pointer"
+    aria-labelledby="card-title-@@id"
+  >
+    <div class="flex justify-end items-start mb-27.5">
+      <img src="@@imgSrc" alt="" role="presentation" class="w-auto h-auto" />
     </div>
-  </div>
-</article>
+    <div class="mt-0">
+      <h3 id="card-title-@@id" class="text-2.5xl font-bold leading-tight">
+        @@title
+      </h3>
+      <div
+        class="max-h-0 group-hover:max-h-60 transition-all duration-500 overflow-hidden"
+        aria-hidden="true"
+      >
+        <p
+          class="mt-6 text-base font-normal opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100"
+        >
+          @@description
+        </p>
+      </div>
+    </div>
+  </article>
+</div>
