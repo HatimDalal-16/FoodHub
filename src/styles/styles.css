@@ -15,12 +15,17 @@
   --color-primary-glowgreen: #8cd623;
   --color-primary-yellow: #d4ac39;
   --color-primary-lightgrey: #f5f6f6;
+  --color-primary-grey: #333332;
   --color-secondary-grey: #131313;
+  --color-secondary-grey-light: #f1f1f1;
 
   --color-light: #1f1f1fa8;
 
   --text-xxs: 0.688rem;
   --text-xxs--line-height: 1.25rem;
+
+  --text-15px: 0.9375rem;
+  --text-15px--line-height: 0.96rem;
 }
 
 @layer base {
