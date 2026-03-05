@@ -3,7 +3,8 @@
   class="headroom absolute top-0 left-0 z-50 w-full group bg-transparent hover:bg-white transition-all duration-500 text-white hover:text-black"
 >
   <div class="container">
-    <div class="xl:px-11.5 py-4 flex items-center justify-between">
+    <!-- <div class="xl:px-11.5 py-4 flex items-center justify-between"> -->
+    <div class="py-4 flex items-center justify-between">
       <!-- Logo -->
       <div class="flex-1 flex justify-start">
         <a href="/">
@@ -25,48 +26,65 @@
         class="hidden lg:flex flex-1 justify-center me-4"
         aria-label="Main Navigation"
       >
-        <ul class="flex gap-1.5 items-center text-sm whitespace-nowrap">
-          <li><a href="#">About ADFH</a></li>
+        <ul
+          class="flex gap-1.5 items-center text-sm whitespace-nowrap [&_a]:hover:text-primary-deepblue [&_a]:transition-colors [&_a]:duration-200 [&_li]:w-25 [&_li]:h-7.5 [&_li]:flex [&_li]:items-center [&_li]:justify-center"
+        >
+          <!-- Nav Item with panel -->
+          <li class="nav-item" data-panel="about">
+            <a href="#">About ADFH</a>
+          </li>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
+            width="11"
+            height="11"
             fill="currentColor"
             viewBox="0 0 256 256"
           >
-            <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Z"></path>
+            <path d="M174,128a46,46,0,1,1-46-46A46,46,0,0,1,174,128Z"></path>
           </svg>
-          <li><a href="#">Explore</a></li>
+
+          <li class="nav-item" data-panel="explore">
+            <a href="#">Explore</a>
+          </li>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
+            width="11"
+            height="11"
             fill="currentColor"
             viewBox="0 0 256 256"
           >
-            <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Z"></path>
+            <path d="M174,128a46,46,0,1,1-46-46A46,46,0,0,1,174,128Z"></path>
           </svg>
-          <li><a href="#">Trades</a></li>
+
+          <li class="nav-item" data-panel="trades">
+            <a href="#">Trades</a>
+          </li>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
+            width="11"
+            height="11"
             fill="currentColor"
             viewBox="0 0 256 256"
           >
-            <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Z"></path>
+            <path d="M174,128a46,46,0,1,1-46-46A46,46,0,0,1,174,128Z"></path>
           </svg>
-          <li><a href="#">Join the Hub</a></li>
+
+          <li class="nav-item" data-panel="join">
+            <a href="#">Join the Hub</a>
+          </li>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
+            width="11"
+            height="11"
             fill="currentColor"
             viewBox="0 0 256 256"
           >
-            <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Z"></path>
+            <path d="M174,128a46,46,0,1,1-46-46A46,46,0,0,1,174,128Z"></path>
           </svg>
-          <li><a href="#">Connect</a></li>
+
+          <li class="nav-item" data-panel="connect">
+            <a href="#">Connect</a>
+          </li>
         </ul>
       </nav>
 
@@ -77,13 +95,12 @@
           <button
             type="button"
             aria-label="Search"
-            class="group/icon cursor-pointer relative inline-flex items-center justify-center size-10 rounded-full overflow-hidden"
+            class="nav-item group/icon cursor-pointer relative inline-flex items-center justify-center size-10 rounded-full overflow-hidden"
+            data-panel="search"
           >
             <span
               class="absolute inset-0 m-auto size-0 transition-all bg-black group-hover/icon:size-10 rounded-full"
             ></span>
-
-            <!-- First icon -->
             <i
               class="size-5 relative z-10 flex items-center justify-center transition-all duration-500 group-hover/icon:translate-x-full group-hover/icon:-translate-y-full"
             >
@@ -98,8 +115,6 @@
                 ></path>
               </svg>
             </i>
-
-            <!-- Second icon -->
             <i
               class="size-5 absolute z-10 flex items-center justify-center -translate-x-full translate-y-full group-hover/icon:translate-x-0 group-hover/icon:translate-y-0 transition-all duration-500 text-white"
             >
@@ -126,8 +141,6 @@
             <span
               class="absolute inset-0 m-auto size-0 transition-all bg-black group-hover/icon:size-10 rounded-full"
             ></span>
-
-            <!-- First icon -->
             <i
               class="size-5 relative z-10 flex items-center justify-center transition-all duration-500 group-hover/icon:translate-x-full group-hover/icon:-translate-y-full"
             >
@@ -142,8 +155,6 @@
                 ></path>
               </svg>
             </i>
-
-            <!-- Second icon -->
             <i
               class="size-5 absolute z-10 flex items-center justify-center -translate-x-full translate-y-full group-hover/icon:translate-x-0 group-hover/icon:translate-y-0 transition-all duration-500 text-white"
             >
@@ -161,7 +172,7 @@
           </button>
         </li>
 
-        <!-- Mobile Menu Icon (Hamburger) -->
+        <!-- Mobile Hamburger -->
         <li class="lg:hidden">
           <button
             id="mobile-menu-toggle"
@@ -191,6 +202,130 @@
           "#", "text": "Lets Build Together" } })
         </li>
       </ul>
+    </div>
+  </div>
+
+  <!-- ─── MEGA MENU PANELS ─── -->
+  <div
+    id="mega-panels"
+    class="absolute top-full left-0 w-full overflow-hidden grid grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out"
+  >
+    <!--   <div
+    id="mega-panels"
+  ORIGINAL: class="absolute top-full left-0 w-full overflow-hidden grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-in-out" -->
+    <div class="min-h-0">
+      <div class="max-w-264.5 mx-auto bg-white">
+        <!-- About panel -->
+        <div
+          id="panel-about"
+          class="mega-panel p-5 justify-between text-black flex"
+        >
+          <div
+            class="pt-5 ps-35 flex flex-col gap-4.5 text-secondary-grey [&_p]:leading-none [&_p]:font-medium [&_p]:text-lg"
+          >
+            <p>Why ADFH</p>
+            <p>Economic contribution</p>
+            <p>Sustainability & Food Security</p>
+          </div>
+          <div class="flex gap-5">
+            <img
+              src="assets/mega-menu-0.jpg"
+              alt="About ADFH"
+              class="max-w-56 h-43.25 object-cover"
+            />
+            <div
+              class="pt-5 flex flex-col justify-between max-w-[14.688rem] self-stretch pe-5"
+            >
+              <p
+                class="text-[0.938rem] leading-none font-medium text-primary-grey"
+              >
+                The Abu Dhabi Food Hub – KEZAD is being developed as an
+                ecosystem for trading of all food categories
+              </p>
+              <div class="self-start">
+                @@include("../components/helpers/links/link.html", { "link": {
+                "href": "#", "text": "More About ADFH" } })
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Explore panel -->
+        <div id="panel-explore" class="mega-panel hidden text-black">
+          <p class="text-[0.75rem] text-gray-400 italic">
+            Explore panel — add content
+          </p>
+        </div>
+
+        <!-- Trades panel -->
+        <div id="panel-trades" class="mega-panel hidden text-black">
+          <p class="text-[0.75rem] text-gray-400 italic">
+            Trades panel — add content
+          </p>
+        </div>
+
+        <!-- Join the Hub panel -->
+        <div id="panel-join" class="mega-panel hidden text-black">
+          <p class="text-[0.75rem] text-gray-400 italic">
+            Join the Hub panel — add content
+          </p>
+        </div>
+
+        <!-- Connect panel -->
+        <div id="panel-connect" class="mega-panel hidden text-black">
+          <p class="text-[0.75rem] text-gray-400 italic">
+            Connect panel — add content
+          </p>
+        </div>
+
+        <!-- Search panel -->
+        <div
+          id="panel-search"
+          class="mega-panel hidden h-[20.375rem] flex flex-col items-center justify-center"
+        >
+          <div class="max-w-174.5 w-full mx-auto">
+            <p
+              class="text-sm leading-[1.15] font-medium text-primary-deepblue mb-3"
+            >
+              What are you searching for?
+            </p>
+            <div
+              class="flex items-stretch py-1 border border-[#EAEAEA] rounded-lg focus-within:border-primary-deepblue transition-colors overflow-hidden"
+            >
+              <input
+                type="text"
+                placeholder="Search for something..."
+                class="flex-1 px-4 text-sm font-normal focus:outline-none placeholder:text-[#ADB5BD]"
+              />
+              <button
+                class="shrink-0 cursor-pointer flex items-center justify-center me-4"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="34"
+                  height="34"
+                  fill="currentColor"
+                  viewBox="0 0 256 256"
+                  class="scale-[0.58]"
+                >
+                  <path
+                    d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+            <div
+              class="ms-4 flex flex-col gap-3.5 mt-[1.688rem] leading-none text-sm [&>p]:leading-[1.15] [&>p]:font-medium [&>p]:underline text-[#2D3955BA]"
+            >
+              <p>Information for suppliers</p>
+              <p>
+                Still can’t find something and want to get in touch with us on a
+                specific topic?
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </header>

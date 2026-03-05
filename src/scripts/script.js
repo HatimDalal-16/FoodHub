@@ -12,6 +12,67 @@ if (header) {
 console.log("JS reloaded at", Date.now());
 console.log("force rebuild", Date.now()); 
 
+// ── Mega Menu ──────────────────────────────────────────────────────────────
+(function () {
+  const header      = document.getElementById('header');
+  const megaPanels  = document.getElementById('mega-panels');
+  const navItems    = document.querySelectorAll('.nav-item[data-panel]');
+  let closeTimer    = null;
+
+  function showPanel(id) {
+    clearTimeout(closeTimer);
+
+    // Hide all panels first, then show the right one
+    document.querySelectorAll('.mega-panel').forEach(p => p.classList.add('hidden'));
+    const target = document.getElementById(`panel-${id}`);
+    if (target) target.classList.remove('hidden');
+
+    // Open grid row
+    megaPanels.style.gridTemplateRows = '1fr';
+
+    // Keep header in its hovered (white) state
+    header.classList.add('bg-white', 'text-black');
+    header.classList.remove('bg-transparent', 'text-white');
+  }
+
+  function hidePanels() {
+    return; // TEMP: Prevent hiding in dev
+    closeTimer = setTimeout(() => {
+      megaPanels.style.gridTemplateRows = '0fr';
+      document.querySelectorAll('.mega-panel').forEach(p => p.classList.add('hidden'));
+
+      // Only revert header colour if mouse isn't still over it
+      if (!header.matches(':hover')) {
+        header.classList.remove('bg-white', 'text-black');
+        header.classList.add('bg-transparent', 'text-white');
+      }
+    }, 120); // small delay prevents flicker when moving between items
+  }
+
+  navItems.forEach(item => {
+    if (item.dataset.panel === 'search') {
+      // Search triggers on CLICK
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        showPanel('search');
+        // Auto-focus the input
+        const input = document.querySelector('#panel-search input');
+        if (input) setTimeout(() => input.focus(), 350);
+      });
+    } else {
+      // Others trigger on HOVER
+      item.addEventListener('mouseenter', () => showPanel(item.dataset.panel));
+      item.addEventListener('mouseleave', hidePanels);
+    }
+  });
+
+  megaPanels.addEventListener('mouseenter', () => clearTimeout(closeTimer));
+  megaPanels.addEventListener('mouseleave', hidePanels);
+
+  // TEMP: Force panel open for development
+  showPanel('about');
+})();
+
 const tabs = document.querySelectorAll('.tab');
 const video = document.querySelector('video');
 const videoSource = document.querySelector('video source');
@@ -199,6 +260,40 @@ document.querySelectorAll('.accordion-item').forEach(item => {
 // ──────────────────────────────────────────────
 // Mobile Menu – Toggle, Close, Focus Trap
 // ──────────────────────────────────────────────
+const menuToggle = document.getElementById('mobile-menu-toggle');
+const menuClose = document.getElementById('mobile-menu-close');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+const body = document.body;
+
+if (menuToggle && mobileMenu && mobileMenuBackdrop) {
+  const openMenu = () => {
+    mobileMenu.classList.remove('translate-x-full');
+    mobileMenuBackdrop.classList.remove('opacity-0', 'invisible');
+    mobileMenuBackdrop.classList.add('opacity-100', 'visible');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    body.style.overflow = 'hidden';
+  };
+
+  const closeMenu = () => {
+    mobileMenu.classList.add('translate-x-full');
+    mobileMenuBackdrop.classList.remove('opacity-100', 'visible');
+    mobileMenuBackdrop.classList.add('opacity-0', 'invisible');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    body.style.overflow = '';
+  };
+
+  menuToggle.addEventListener('click', openMenu);
+  if (menuClose) menuClose.addEventListener('click', closeMenu);
+  mobileMenuBackdrop.addEventListener('click', closeMenu);
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !mobileMenu.classList.contains('translate-x-full')) {
+      closeMenu();
+    }
+  });
+}
 
 //-------------GLobe
 (function () {
