@@ -251,31 +251,58 @@
         </div>
 
         <!-- Explore panel -->
-        <div id="panel-explore" class="mega-panel hidden text-black">
-          <p class="text-[0.75rem] text-gray-400 italic">
-            Explore panel — add content
-          </p>
+        <div id="panel-explore" class="mega-panel hidden justify-between flex">
+          <div class="ps-5 py-5 flex-1">
+            <img
+              src="assets/mega-menu-explore.jpg"
+              alt=""
+              class="w-full max-w-[18.063rem] max-h-[12.688rem] object-cover"
+            />
+          </div>
+          <div class="py-10 pe-17.5 flex gap-7.5">
+            <ul
+              class="text-secondary-grey flex flex-col gap-4.5 [&_li]:leading-none [&_a]:leading-none [&_a]:block [&_a]:text-lg [&_a]:font-medium"
+            >
+              <li><a href="/markets">Markets</a></li>
+              <li><a href="/spaces">Spaces</a></li>
+              <li><a href="/technology">Technology</a></li>
+              <li><a href="/thehub">The Hub</a></li>
+            </ul>
+            <ul
+              class="text-secondary-grey flex flex-col flex-wrap gap-y-4.5 gap-x-7.5 max-h-[12.688rem] [&_li]:leading-none [&_a]:leading-none [&_a]:block [&_a]:text-lg [&_a]:font-medium"
+            >
+              <li>
+                <a
+                  href="/markets"
+                  class="text-primary-green hover:text-primary-glowgreen"
+                  >Fruits & Vegetables</a
+                >
+              </li>
+              <li><a href="/spaces">Spaces</a></li>
+              <li><a href="/technology">Dry Commodities</a></li>
+              <li><a href="/thehub">Gourmet & Fine Foods</a></li>
+              <li><a href="/thehub">Meat</a></li>
+              <li><a href="/thehub">Seafood</a></li>
+              <li><a href="/thehub">Dairy</a></li>
+              <li><a href="/thehub">Frozen & Chilled Foods</a></li>
+              <li><a href="/thehub">Bakery</a></li>
+            </ul>
+          </div>
         </div>
 
         <!-- Trades panel -->
-        <div id="panel-trades" class="mega-panel hidden text-black">
-          <p class="text-[0.75rem] text-gray-400 italic">
-            Trades panel — add content
-          </p>
+        <div id="panel-trades" class="mega-panel hidden">
+          <p class="text-[0.75rem] text-gray-400 italic">Trades panel.</p>
         </div>
 
         <!-- Join the Hub panel -->
-        <div id="panel-join" class="mega-panel hidden text-black">
-          <p class="text-[0.75rem] text-gray-400 italic">
-            Join the Hub panel — add content
-          </p>
+        <div id="panel-join" class="mega-panel hidden">
+          <p class="text-[0.75rem] text-gray-400 italic">Join the Hub panel.</p>
         </div>
 
         <!-- Connect panel -->
-        <div id="panel-connect" class="mega-panel hidden text-black">
-          <p class="text-[0.75rem] text-gray-400 italic">
-            Connect panel — add content
-          </p>
+        <div id="panel-connect" class="mega-panel hidden">
+          <p class="text-[0.75rem] text-gray-400 italic">Connect panel.</p>
         </div>
 
         <!-- Search panel -->
@@ -315,13 +342,20 @@
               </button>
             </div>
             <div
-              class="ms-4 flex flex-col gap-3.5 mt-[1.688rem] leading-none text-sm [&>p]:leading-[1.15] [&>p]:font-normal [&>p]:underline text-[#2D3955BA]"
+              class="ms-4 flex flex-col gap-3.5 mt-[1.688rem] leading-none text-sm text-[#2D3955BA] [&_a]:transition-colors [&_a]:duration-200"
             >
-              <p>Information for suppliers</p>
-              <p>
+              <a
+                href="#"
+                class="underline hover:text-primary-deepblue leading-[1.15]"
+                >Information for suppliers</a
+              >
+              <a
+                href="#"
+                class="underline hover:text-primary-deepblue leading-[1.15]"
+              >
                 Still can’t find something and want to get in touch with us on a
                 specific topic?
-              </p>
+              </a>
             </div>
           </div>
         </div>

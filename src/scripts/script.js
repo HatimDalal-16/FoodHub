@@ -27,6 +27,16 @@ console.log("force rebuild", Date.now());
     const target = document.getElementById(`panel-${id}`);
     if (target) target.classList.remove('hidden');
 
+    // Manage active state classes on nav items
+    navItems.forEach(item => {
+      const link = item.querySelector('a') || item;
+      if (item.dataset.panel === id) {
+        link.classList.add('text-primary-deepblue');
+      } else {
+        link.classList.remove('text-primary-deepblue');
+      }
+    });
+
     // Open grid row
     megaPanels.style.gridTemplateRows = '1fr';
 
@@ -36,10 +46,16 @@ console.log("force rebuild", Date.now());
   }
 
   function hidePanels() {
-    return; // TEMP: Prevent hiding in dev
+    // return; // TEMP: Prevent hiding in dev
     closeTimer = setTimeout(() => {
       megaPanels.style.gridTemplateRows = '0fr';
       document.querySelectorAll('.mega-panel').forEach(p => p.classList.add('hidden'));
+
+      // Remove active states from links
+      navItems.forEach(item => {
+        const link = item.querySelector('a') || item;
+        link.classList.remove('text-primary-deepblue');
+      });
 
       // Only revert header colour if mouse isn't still over it
       if (!header.matches(':hover')) {
