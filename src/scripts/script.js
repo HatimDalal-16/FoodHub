@@ -85,8 +85,7 @@ console.log("force rebuild", Date.now());
   megaPanels.addEventListener('mouseenter', () => clearTimeout(closeTimer));
   megaPanels.addEventListener('mouseleave', hidePanels);
 
-  // TEMP: Force panel open for development
-  showPanel('about');
+  header.addEventListener('mouseleave', hidePanels);
 })();
 
 const tabs = document.querySelectorAll('.tab');
@@ -97,15 +96,15 @@ tabs.forEach(tab => {
         // Skip if this tab is already active (has full white text)
         if (tab.classList.contains('text-white')) return;
 
-        // Set all tabs to semi-transparent white
+        // Set all tabs to semi-transparent white, remove active border
         tabs.forEach(t => {
-            t.classList.remove('text-white');
-            t.classList.add('text-white/50');
+            t.classList.remove('text-white', 'border-primary-glowgreen');
+            t.classList.add('text-white/50', 'border-transparent');
         });
 
-        // Make clicked tab full white
-        tab.classList.add('text-white');
-        tab.classList.remove('text-white/50');
+        // Make clicked tab full white with active border
+        tab.classList.add('text-white', 'border-primary-glowgreen');
+        tab.classList.remove('text-white/50', 'border-transparent');
 
         // Fade out video
         video.classList.add('opacity-0');
@@ -554,4 +553,101 @@ if (menuToggle && mobileMenu && mobileMenuBackdrop) {
   canvas.addEventListener('touchstart', e => { dragging = true; springBack = false; lastMX = e.touches[0].clientX; lastMY = e.touches[0].clientY; }, { passive: true });
   canvas.addEventListener('touchmove', e => { if (!dragging) return; rotY += (e.touches[0].clientX - lastMX) * 0.006; rotX += (e.touches[0].clientY - lastMY) * 0.006; rotX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, rotX)); lastMX = e.touches[0].clientX; lastMY = e.touches[0].clientY; e.preventDefault(); }, { passive: false });
   canvas.addEventListener('touchend', () => { dragging = false; springBack = true; });
+})();
+
+// ── Language / Direction Toggle ────────────────────────────────────────────────
+(function () {
+  const TRANSLATIONS = {
+    // Navigation
+    'nav.about':   { en: 'About ADFH',    ar: 'عن المنظومة' },
+    'nav.explore': { en: 'Explore',        ar: 'استكشف' },
+    'nav.trades':  { en: 'Trades',         ar: 'التجارة' },
+    'nav.join':    { en: 'Join the Hub',   ar: 'انضم إلى المنظومة' },
+    'nav.connect': { en: 'Connect',        ar: 'تواصل' },
+
+    // Hero
+    'hero.title': { en: 'Built for Trade Design for Growth', ar: 'بُنيت للتجارة صُممت للنمو' },
+    'hero.desc':  { en: 'The Abu Dhabi Food Hub – KEZAD is being developed as an ecosystem for trading of all food categories', ar: 'منظومة أبوظبي للغذاء – كيزاد تُطوَّر لتكون نظاماً متكاملاً لتجارة جميع الفئات الغذائية' },
+
+    // Video tabs
+    'tab.1': { en: 'An Integrated Food Trade & Logistics Hub in Abu Dhabi', ar: 'مركز متكامل لتجارة الغذاء واللوجستيات في أبوظبي' },
+    'tab.2': { en: 'Powering efficient trade across borders',               ar: 'تمكين تجارة فعّالة عبر الحدود' },
+    'tab.3': { en: 'Finest wholesale food trading & logistics platform',    ar: 'أرقى منصة لتجارة الغذاء بالجملة واللوجستيات' },
+
+    // Vision
+    'vision.left':  { en: 'Progressing the',    ar: 'نحو تحقيق' },
+    'vision.right': { en: 'Vision of Abu Dhabi', ar: 'رؤية أبوظبي' },
+
+    // About
+    'about.text': { en: 'The 3.3 square kilometres project is a joint venture between Abu Dhabi Ports Group and Ghassan Aboud Group', ar: 'مشروع بمساحة 3.3 كيلومتر مربع، وهو مشروع مشترك بين مجموعة موانئ أبوظبي ومجموعة غسان عبود' },
+
+    // Market §02
+    'market.teaser': { en: 'Ready to see the potential of one-stop-shop integrated ecosystem', ar: 'هل أنت مستعد لاكتشاف إمكانات النظام البيئي المتكامل؟' },
+
+    // Why AD §03
+    'why.tag':  { en: 'one-stop-shop', ar: 'وجهة شاملة' },
+    'why.desc': { en: 'Abu Dhabi Food Hub, as a one-stop destination for importers, distributors, and sellers, it delivers exceptional value', ar: 'منظومة أبوظبي للغذاء، بوصفها وجهةً شاملة للمستوردين والموزعين والبائعين، تُقدم قيمة استثنائية' },
+
+    // Strategic §04
+    'strategic.heading':  { en: 'Strategically located. with world-class logistics connections', ar: 'موقع استراتيجي بوصلات لوجستية على مستوى عالمي' },
+    'strategic.subtitle': { en: 'Huge land for huge production',   ar: 'أراضٍ شاسعة لإنتاج ضخم' },
+    'strategic.desc':     { en: 'Step into one of the most comprehensive food trade zones in the Middle East. ecosystem to facilitate wholesale trade and logistics across all food categories.', ar: 'ادخل إلى أحد أكثر مناطق تجارة الغذاء شمولاً في الشرق الأوسط، نظام بيئي متكامل لتسهيل التجارة بالجملة واللوجستيات.' },
+
+    // Scale CTA
+    'scale.desc': { en: 'Step into one of the most comprehensive food trade zones in the Middle East. An ecosystem designed to facilitate wholesale trade at scale.', ar: 'ادخل إلى أحد أكثر مناطق تجارة الغذاء شمولاً في الشرق الأوسط. نظام بيئي مصمم لتسهيل التجارة بالجملة على نطاق واسع.' },
+
+    // Spaces §05
+    'spaces.desc': { en: 'Step into one of the most comprehensive food trade zones in the Middle East. ecosystem to facilitate wholesale trade and logistics across all food categories.', ar: 'ادخل إلى أحد أكثر مناطق تجارة الغذاء شمولاً في الشرق الأوسط. نظام بيئي لتسهيل التجارة بالجملة واللوجستيات.' },
+
+    // News §06
+    'news.heading': { en: 'Newsroom', ar: 'غرفة الأخبار' },
+
+    // Footer
+    'footer.newsletter.title': { en: 'Be the first to know',                              ar: 'كن أول من يعلم' },
+    'footer.newsletter.desc':  { en: "We'll send you only what matters — no noise, no spam.", ar: 'سنرسل لك فقط ما يهمك — بلا ضوضاء، بلا بريد مزعج.' },
+  };
+
+  // Elements whose content contains HTML markup (spans, br, etc.)
+  const TRANSLATIONS_HTML = {
+    'market.heading': {
+      en: '<span class="text-primary-lightblue">Abu Dhabi Food Hub</span> is built to reshape the global food trade &amp; logistics landscape.',
+      ar: '<span class="text-primary-lightblue">منظومة أبوظبي للغذاء</span> مبنية لإعادة تشكيل منظومة تجارة الغذاء واللوجستيات العالمية.',
+    },
+    'why.heading': {
+      en: 'Importers.<br />Distributors. Sellers',
+      ar: 'مستوردون.<br />موزعون. بائعون',
+    },
+    'scale.heading': {
+      en: 'Scale Your Supply &amp; <br> Production',
+      ar: 'وسّع إمداداتك <br> وإنتاجك',
+    },
+    'spaces.heading': {
+      en: 'Designed for you.<br><span class="text-primary-lightblue">Built to evolve</span> with you',
+      ar: 'صُمم لأجلك.<br><span class="text-primary-lightblue">بُني ليتطور</span> معك',
+    },
+  };
+
+  let currentLang = 'en';
+  const html = document.documentElement;
+  const btn = document.getElementById('lang-toggle');
+  if (!btn) return;
+
+  function applyLang(lang) {
+    currentLang = lang;
+    html.setAttribute('lang', lang);
+    html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    btn.setAttribute('aria-label', lang === 'ar' ? 'تغيير اللغة إلى الإنجليزية' : 'Change Language to Arabic');
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const t = TRANSLATIONS[el.dataset.i18n];
+      if (t && t[lang] !== undefined) el.textContent = t[lang];
+    });
+
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const t = TRANSLATIONS_HTML[el.dataset.i18nHtml];
+      if (t && t[lang] !== undefined) el.innerHTML = t[lang];
+    });
+  }
+
+  btn.addEventListener('click', () => applyLang(currentLang === 'en' ? 'ar' : 'en'));
 })();

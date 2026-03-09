@@ -31,7 +31,7 @@
         >
           <!-- Nav Item with panel -->
           <li class="nav-item" data-panel="about">
-            <a href="#">About ADFH</a>
+            <a href="#" data-i18n="nav.about">About ADFH</a>
           </li>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +44,7 @@
           </svg>
 
           <li class="nav-item" data-panel="explore">
-            <a href="#">Explore</a>
+            <a href="#" data-i18n="nav.explore">Explore</a>
           </li>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@
           </svg>
 
           <li class="nav-item" data-panel="trades">
-            <a href="#">Trades</a>
+            <a href="#" data-i18n="nav.trades">Trades</a>
           </li>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +70,7 @@
           </svg>
 
           <li class="nav-item" data-panel="join">
-            <a href="#">Join the Hub</a>
+            <a href="#" data-i18n="nav.join">Join the Hub</a>
           </li>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +83,7 @@
           </svg>
 
           <li class="nav-item" data-panel="connect">
-            <a href="#">Connect</a>
+            <a href="#" data-i18n="nav.connect">Connect</a>
           </li>
         </ul>
       </nav>
@@ -135,7 +135,8 @@
         <!-- Globe -->
         <li class="lg:ms-3.5 xl:ms-5">
           <button
-            aria-label="Change Language"
+            id="lang-toggle"
+            aria-label="Change Language to Arabic"
             class="group/icon cursor-pointer relative inline-flex items-center justify-center size-10 rounded-full overflow-hidden"
           >
             <span
@@ -208,11 +209,8 @@
   <!-- ─── MEGA MENU PANELS ─── -->
   <div
     id="mega-panels"
-    class="absolute top-full left-0 w-full overflow-hidden grid grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out"
+    class="absolute top-full left-0 w-full overflow-hidden grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-in-out"
   >
-    <!--   <div
-    id="mega-panels"
-  ORIGINAL: class="absolute top-full left-0 w-full overflow-hidden grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-in-out" -->
     <div class="min-h-0">
       <div class="max-w-264.5 mx-auto bg-white">
         <!-- About panel -->
@@ -221,11 +219,11 @@
           class="mega-panel p-5 justify-between text-black flex"
         >
           <div
-            class="pt-5 ps-35 flex flex-col gap-4.5 text-secondary-grey [&_p]:leading-none [&_p]:font-medium [&_p]:text-lg"
+            class="pt-5 ps-35 flex flex-col gap-4.5 text-secondary-grey [&_a]:leading-none [&_a]:font-medium [&_a]:text-lg [&_a]:transition-colors [&_a]:duration-200 [&_a]:hover:text-primary-deepblue"
           >
-            <p>Why ADFH</p>
-            <p>Economic contribution</p>
-            <p>Sustainability & Food Security</p>
+            <a href="#">Why ADFH</a>
+            <a href="#">Economic contribution</a>
+            <a href="#">Sustainability &amp; Food Security</a>
           </div>
           <div class="flex gap-5">
             <img
@@ -259,7 +257,9 @@
               class="w-full max-w-[18.063rem] max-h-[12.688rem] object-cover"
             />
           </div>
-          <div class="py-10 pe-17.5 flex gap-7.5">
+          <div
+            class="py-10 pe-17.5 flex gap-7.5 [&_a]:transition-colors [&_a]:duration-200 [&_a]:hover:text-primary-deepblue"
+          >
             <ul
               class="text-secondary-grey flex flex-col gap-4.5 [&_li]:leading-none [&_a]:leading-none [&_a]:block [&_a]:text-lg [&_a]:font-medium"
             >
@@ -274,17 +274,17 @@
               <li>
                 <a
                   href="/markets"
-                  class="text-primary-green hover:text-primary-glowgreen"
-                  >Fruits & Vegetables</a
+                  class="text-primary-green hover:!text-primary-glowgreen"
+                  >Fruits &amp; Vegetables</a
                 >
               </li>
               <li><a href="/spaces">Spaces</a></li>
               <li><a href="/technology">Dry Commodities</a></li>
-              <li><a href="/thehub">Gourmet & Fine Foods</a></li>
+              <li><a href="/thehub">Gourmet &amp; Fine Foods</a></li>
               <li><a href="/thehub">Meat</a></li>
               <li><a href="/thehub">Seafood</a></li>
               <li><a href="/thehub">Dairy</a></li>
-              <li><a href="/thehub">Frozen & Chilled Foods</a></li>
+              <li><a href="/thehub">Frozen &amp; Chilled Foods</a></li>
               <li><a href="/thehub">Bakery</a></li>
             </ul>
           </div>
@@ -411,7 +411,7 @@
           href="#"
           class="mobile-nav-link flex items-center justify-between py-4 text-lg font-medium border-b border-white/10 hover:text-primary-glowgreen transition-colors duration-200"
         >
-          <span>About ADFH</span>
+          <span data-i18n="nav.about">About ADFH</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -431,7 +431,7 @@
           href="#"
           class="mobile-nav-link flex items-center justify-between py-4 text-lg font-medium border-b border-white/10 hover:text-primary-glowgreen transition-colors duration-200"
         >
-          <span>Explore</span>
+          <span data-i18n="nav.explore">Explore</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -451,7 +451,7 @@
           href="#"
           class="mobile-nav-link flex items-center justify-between py-4 text-lg font-medium border-b border-white/10 hover:text-primary-glowgreen transition-colors duration-200"
         >
-          <span>Trades</span>
+          <span data-i18n="nav.trades">Trades</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -471,7 +471,7 @@
           href="#"
           class="mobile-nav-link flex items-center justify-between py-4 text-lg font-medium border-b border-white/10 hover:text-primary-glowgreen transition-colors duration-200"
         >
-          <span>Join the Hub</span>
+          <span data-i18n="nav.join">Join the Hub</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -491,7 +491,7 @@
           href="#"
           class="mobile-nav-link flex items-center justify-between py-4 text-lg font-medium border-b border-white/10 hover:text-primary-glowgreen transition-colors duration-200"
         >
-          <span>Connect</span>
+          <span data-i18n="nav.connect">Connect</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
