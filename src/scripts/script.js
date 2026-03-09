@@ -582,7 +582,7 @@ if (menuToggle && mobileMenu && mobileMenuBackdrop) {
     'about.text': { en: 'The 3.3 square kilometres project is a joint venture between Abu Dhabi Ports Group and Ghassan Aboud Group', ar: 'مشروع بمساحة 3.3 كيلومتر مربع، وهو مشروع مشترك بين مجموعة موانئ أبوظبي ومجموعة غسان عبود' },
 
     // Market §02
-    'market.teaser': { en: 'Ready to see the potential of one-stop-shop integrated ecosystem', ar: 'هل أنت مستعد لاكتشاف إمكانات النظام البيئي المتكامل؟' },
+
 
     // Why AD §03
     'why.tag':  { en: 'one-stop-shop', ar: 'وجهة شاملة' },
@@ -624,6 +624,10 @@ if (menuToggle && mobileMenu && mobileMenuBackdrop) {
     'spaces.heading': {
       en: 'Designed for you.<br><span class="text-primary-lightblue">Built to evolve</span> with you',
       ar: 'صُمم لأجلك.<br><span class="text-primary-lightblue">بُني ليتطور</span> معك',
+    },
+    'market.teaser': {
+      en: 'Ready to see the potential of <span class="whitespace-nowrap">one-stop-shop</span> integrated ecosystem',
+      ar: 'هل أنت مستعد لاكتشاف إمكانات النظام البيئي المتكامل؟',
     },
   };
 
