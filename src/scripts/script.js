@@ -272,6 +272,54 @@ document.querySelectorAll('.accordion-item').forEach(item => {
     });
 });
 
+// ── Small Card – Touch/Keyboard Toggle ────────────────────────────────────────
+(function () {
+  const slider = document.querySelector('.small-card-slider');
+  if (!slider) return;
+
+  function openCard(card) {
+    const panel = card.querySelector('[data-card-panel]');
+    const desc  = card.querySelector('[data-card-desc]');
+    card.style.maxHeight        = '30rem';
+    card.style.backgroundColor  = 'var(--color-primary-green)';
+    if (panel) panel.style.maxHeight = '15rem';
+    if (desc)  desc.style.opacity    = '1';
+    card.setAttribute('aria-expanded', 'true');
+    if (panel) panel.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeCard(card) {
+    const panel = card.querySelector('[data-card-panel]');
+    const desc  = card.querySelector('[data-card-desc]');
+    card.style.maxHeight        = '';
+    card.style.backgroundColor  = '';
+    if (panel) panel.style.maxHeight = '';
+    if (desc)  desc.style.opacity    = '';
+    card.setAttribute('aria-expanded', 'false');
+    if (panel) panel.setAttribute('aria-hidden', 'true');
+  }
+
+  function toggle(card) {
+    const isOpen = card.getAttribute('aria-expanded') === 'true';
+    slider.querySelectorAll('article').forEach(closeCard);
+    if (!isOpen) openCard(card);
+  }
+
+  // Click — touch devices only (hover:none = no real hover support)
+  slider.addEventListener('click', e => {
+    if (!window.matchMedia('(hover: none)').matches) return;
+    const card = e.target.closest('article');
+    if (card) toggle(card);
+  });
+
+  // Keyboard — all devices (Enter / Space for accessibility)
+  slider.addEventListener('keydown', e => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const card = e.target.closest('article');
+    if (card) { e.preventDefault(); toggle(card); }
+  });
+})();
+
 // ──────────────────────────────────────────────
 // Mobile Menu – Toggle, Close, Focus Trap
 // ──────────────────────────────────────────────

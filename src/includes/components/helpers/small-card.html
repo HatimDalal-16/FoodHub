@@ -2,6 +2,8 @@
   <article
     class="group w-[21.188rem] min-h-70 hover:max-h-120 py-7.5 px-6 text-white flex flex-col bg-secondary-deepblue hover:bg-primary-green transition-all duration-500 overflow-hidden rounded-xl cursor-pointer"
     aria-labelledby="card-title-@@id"
+    aria-expanded="false"
+    tabindex="0"
   >
     <div class="flex justify-end items-start mb-27.5">
       <img src="@@imgSrc" alt="" role="presentation" class="w-auto h-auto" />
@@ -12,10 +14,12 @@
       </h3>
       <div
         class="max-h-0 group-hover:max-h-60 transition-all duration-500 overflow-hidden"
+        data-card-panel
         aria-hidden="true"
       >
         <p
           class="mt-6 text-base font-normal opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100"
+          data-card-desc
         >
           @@description
         </p>
