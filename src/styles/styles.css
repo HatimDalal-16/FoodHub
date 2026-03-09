@@ -24,6 +24,9 @@
   --text-xxs: 0.688rem;
   --text-xxs--line-height: 1.25rem;
 
+  --text-14-32px: 0.895rem;
+  --text-14-32px--line-height: 1.249rem;
+
   --text-15px: 0.9375rem;
   --text-15px--line-height: 0.96rem;
 }
