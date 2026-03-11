@@ -159,7 +159,12 @@ gsap.to(".vision-left", {
 });
 
 // Initialize Slick Slider for Service Cards
-$(document).ready(function(){
+function initSliders(isRtl) {
+    ['.service-slider', '.small-card-slider', '.news-card-slider'].forEach(sel => {
+        const $el = $(sel);
+        if ($el.hasClass('slick-initialized')) $el.slick('destroy');
+    });
+
     $('.service-slider').slick({
         dots: false,
         infinite: true,
@@ -176,7 +181,7 @@ $(document).ready(function(){
         draggable: true,
         swipe: true,
         touchMove: true,
-       
+        rtl: isRtl,
     });
 
     $('.small-card-slider').slick({
@@ -194,16 +199,15 @@ $(document).ready(function(){
         draggable: true,
         swipe: true,
         touchMove: true,
-    
+        rtl: isRtl,
     });
 
-    // Initialize Slick Slider for News Cards
     $('.news-card-slider').slick({
         dots: false,
         infinite: true,
         slidesToScroll: 1,
         variableWidth: true,
-        autoplay: true,
+        autoplay: false,
         autoplaySpeed: 0,
         speed: 9000,
         cssEase: 'linear',
@@ -212,39 +216,40 @@ $(document).ready(function(){
         pauseOnFocus: true,
         draggable: true,
         swipe: true,
-        touchMove: true
+        touchMove: true,
+        rtl: isRtl,
     });
+}
+
+$(document).ready(function(){
+    initSliders(false);
 });
 
 // Accordion Logic
 document.querySelectorAll('.accordion-item').forEach(item => {
     const trigger = item.querySelector('.accordion-trigger');
     const content = item.querySelector('.accordion-panel');
+    if (!trigger || !content) return;
 
-    item.addEventListener('click', (e) => {
-        // Prevent collapse when clicking links (Industry standard safeguard)
-        if (e.target.closest('a')) return;
-
+    // Listen on the button, not the whole item div, so clicks inside
+    // the expanded panel (images, links) don't accidentally re-trigger
+    trigger.addEventListener('click', () => {
         const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-        const group = item.closest('.w-full.flex.flex-col');
 
-        // Close other items in the same group
-        if (group && !isExpanded) {
-            group.querySelectorAll('.accordion-trigger').forEach(otherTrigger => {
-                if (otherTrigger !== trigger && otherTrigger.getAttribute('aria-expanded') === 'true') {
-                    otherTrigger.setAttribute('aria-expanded', 'false');
-                    const otherContent = document.getElementById(otherTrigger.getAttribute('aria-controls'));
-                    if (otherContent) {
-                        gsap.to(otherContent, {
-                            maxHeight: 0,
-                            opacity: 0,
-                            duration: 0.4,
-                            ease: "power2.inOut",
-                            onComplete: () => {
-                                otherContent.classList.add('invisible');
-                            }
-                        });
-                    }
+        // Close all other open accordions before opening a new one
+        if (!isExpanded) {
+            document.querySelectorAll('.accordion-trigger[aria-expanded="true"]').forEach(otherTrigger => {
+                if (otherTrigger === trigger) return;
+                otherTrigger.setAttribute('aria-expanded', 'false');
+                const otherContent = document.getElementById(otherTrigger.getAttribute('aria-controls'));
+                if (otherContent) {
+                    gsap.to(otherContent, {
+                        maxHeight: 0,
+                        opacity: 0,
+                        duration: 0.4,
+                        ease: "power2.inOut",
+                        onComplete: () => otherContent.classList.add('invisible')
+                    });
                 }
             });
         }
@@ -257,14 +262,12 @@ document.querySelectorAll('.accordion-item').forEach(item => {
                 opacity: 0,
                 duration: 0.4,
                 ease: "power2.inOut",
-                onComplete: () => {
-                    content.classList.add('invisible');
-                }
+                onComplete: () => content.classList.add('invisible')
             });
         } else {
             trigger.setAttribute('aria-expanded', 'true');
             content.classList.remove('invisible');
-            gsap.fromTo(content, 
+            gsap.fromTo(content,
                 { maxHeight: 0, opacity: 0 },
                 { maxHeight: 1000, opacity: 1, duration: 0.6, ease: "power3.out" }
             );
@@ -699,6 +702,8 @@ if (menuToggle && mobileMenu && mobileMenuBackdrop) {
       const t = TRANSLATIONS_HTML[el.dataset.i18nHtml];
       if (t && t[lang] !== undefined) el.innerHTML = t[lang];
     });
+
+    initSliders(lang === 'ar');
   }
 
   btn.addEventListener('click', () => applyLang(currentLang === 'en' ? 'ar' : 'en'));
