@@ -226,53 +226,20 @@ $(document).ready(function(){
 });
 
 // Accordion Logic
-document.querySelectorAll('.accordion-item').forEach(item => {
-    const trigger = item.querySelector('.accordion-trigger');
-    const content = item.querySelector('.accordion-panel');
-    if (!trigger || !content) return;
+$('.accordion-trigger').on('click', function () {
+    const $trigger = $(this);
+    const isExpanded = $trigger.attr('aria-expanded') === 'true';
+    const $panel = $('#' + $trigger.attr('aria-controls'));
 
-    // Listen on the button, not the whole item div, so clicks inside
-    // the expanded panel (images, links) don't accidentally re-trigger
-    trigger.addEventListener('click', () => {
-        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-
-        // Close all other open accordions before opening a new one
-        if (!isExpanded) {
-            document.querySelectorAll('.accordion-trigger[aria-expanded="true"]').forEach(otherTrigger => {
-                if (otherTrigger === trigger) return;
-                otherTrigger.setAttribute('aria-expanded', 'false');
-                const otherContent = document.getElementById(otherTrigger.getAttribute('aria-controls'));
-                if (otherContent) {
-                    gsap.to(otherContent, {
-                        maxHeight: 0,
-                        opacity: 0,
-                        duration: 0.4,
-                        ease: "power2.inOut",
-                        onComplete: () => otherContent.classList.add('invisible')
-                    });
-                }
-            });
-        }
-
-        // Toggle the clicked item
-        if (isExpanded) {
-            trigger.setAttribute('aria-expanded', 'false');
-            gsap.to(content, {
-                maxHeight: 0,
-                opacity: 0,
-                duration: 0.4,
-                ease: "power2.inOut",
-                onComplete: () => content.classList.add('invisible')
-            });
-        } else {
-            trigger.setAttribute('aria-expanded', 'true');
-            content.classList.remove('invisible');
-            gsap.fromTo(content,
-                { maxHeight: 0, opacity: 0 },
-                { maxHeight: 1000, opacity: 1, duration: 0.6, ease: "power3.out" }
-            );
-        }
+    // Close all other open accordions
+    $('.accordion-trigger[aria-expanded="true"]').not($trigger).each(function () {
+        $(this).attr('aria-expanded', 'false');
+        $('#' + $(this).attr('aria-controls')).slideUp();
     });
+
+    // Toggle the clicked item
+    $trigger.attr('aria-expanded', isExpanded ? 'false' : 'true');
+    $panel.slideToggle();
 });
 
 // ── Small Card – Touch/Keyboard Toggle ────────────────────────────────────────
