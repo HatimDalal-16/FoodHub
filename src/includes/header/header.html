@@ -27,7 +27,7 @@
         aria-label="Main Navigation"
       >
         <ul
-          class="flex gap-1.5 items-center text-sm whitespace-nowrap [&_a]:hover:text-primary-deepblue [&_a]:hover:underline [&_a]:transition-colors [&_a]:duration-200 [&_li]:w-25 [&_li]:h-7.5 [&_li]:flex [&_li]:items-center [&_li]:justify-center"
+          class="flex gap-1.5 items-center text-sm whitespace-nowrap [&_a]:hover:underline [&_a]:hover:text-primary-deepblue [&_a]:transition-colors [&_a]:duration-200 [&_li]:w-25 [&_li]:h-7.5 [&_li]:flex [&_li]:items-center [&_li]:justify-center"
         >
           <!-- Nav Item with panel -->
           <li class="nav-item" data-panel="about">
@@ -198,13 +198,36 @@
         </li>
 
         <!-- CTA -->
-        <li class="ms-1 xl:ms-3.5 hidden lg:block">
-          <a href="#" class="group inline-flex items-center gap-2 lg:gap-4 text-nowrap text-xs md:text-sm font-normal transition-colors duration-300">
-            <span class="group-hover:underline">Lets Build Together</span>
-            <i class="size-4.5 rtl:-scale-x-100 rtl:group-hover:-rotate-45 group-hover:rotate-45 transition-transform duration-300">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5.25 12.75L12.75 5.25" stroke="currentColor" stroke-width="1.65466" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M5.25 5.25H12.75V12.75" stroke="currentColor" stroke-width="1.65466" stroke-linecap="round" stroke-linejoin="round" />
+        <li class="ms-1 xl:ms-3.5 hidden lg:block leading-0">
+          <a
+            href="#"
+            class="group/link hover:underline leading-0 inline-flex items-center gap-2 lg:gap-4 text-nowrap text-xs md:text-sm font-normal duration-300"
+          >
+            Lets Build Together
+            <i
+              class="size-4.5 rtl:-scale-x-100 rtl:group-hover/link:-rotate-45 group-hover/link:rotate-45 transition-transform duration-300"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.25 12.75L12.75 5.25"
+                  stroke="currentColor"
+                  stroke-width="1.65466"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M5.25 5.25H12.75V12.75"
+                  stroke="currentColor"
+                  stroke-width="1.65466"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
               </svg>
             </i>
           </a>
