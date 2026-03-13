@@ -89,44 +89,29 @@ console.log("force rebuild", Date.now());
 })();
 
 const tabs = document.querySelectorAll('.tab');
-const video = document.querySelector('video');
-const videoSource = document.querySelector('video source');
-const heroHeading = document.getElementById('hero-heading');
+const panes = document.querySelectorAll('.tab-pane');
 
-function applyTabHeading(tab) {
-    if (!heroHeading || !tab.dataset.heading) return;
-    const lang = document.documentElement.getAttribute('lang') || 'en';
-    heroHeading.innerHTML = lang === 'ar' ? tab.dataset.headingAr : tab.dataset.heading;
+// Show first pane, activate first tab on load
+if (panes.length) panes[0].classList.remove('hidden');
+if (tabs.length) {
+    tabs[0].classList.remove('text-white/50', 'border-transparent');
+    tabs[0].classList.add('text-white', 'border-primary-glowgreen');
 }
 
 tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-        // Skip if this tab is already active (has full white text)
         if (tab.classList.contains('text-white')) return;
 
-        // Set all tabs to semi-transparent white, remove active border
         tabs.forEach(t => {
             t.classList.remove('text-white', 'border-primary-glowgreen');
             t.classList.add('text-white/50', 'border-transparent');
         });
-
-        // Make clicked tab full white with active border
         tab.classList.add('text-white', 'border-primary-glowgreen');
         tab.classList.remove('text-white/50', 'border-transparent');
 
-        // Update heading to match active tab
-        applyTabHeading(tab);
-
-        // Fade out video
-        video.classList.add('opacity-0');
-
-        // After fade, change source and fade in
-        setTimeout(() => {
-            videoSource.src = `assets/${tab.dataset.video}`;
-            video.load();
-            video.play().catch(e => console.log('Autoplay prevented'));
-            video.classList.remove('opacity-0');
-        }, 300); // match transition duration
+        panes.forEach(pane => pane.classList.add('hidden'));
+        const target = document.getElementById(tab.dataset.target);
+        if (target) target.classList.remove('hidden');
     });
 });
 
@@ -717,10 +702,6 @@ if (menuToggle && mobileMenu && mobileMenuBackdrop) {
       const t = TRANSLATIONS_HTML[el.dataset.i18nHtml];
       if (t && t[lang] !== undefined) el.innerHTML = t[lang];
     });
-
-    // Re-apply active tab heading after language switch
-    const activeTab = document.querySelector('.tab.text-white');
-    if (activeTab) applyTabHeading(activeTab);
 
     initSliders(lang === 'ar');
   }
