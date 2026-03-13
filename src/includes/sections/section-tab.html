@@ -1,0 +1,114 @@
+<div class="flex flex-col pt-22">
+  <h1
+    id="hero-heading"
+    class="text-5xl md:text-7xl leading-[1.13] font-semibold uppercase max-w-180 lg:mb-10 order-1"
+    data-i18n="hero.title"
+  >
+    @@tab.headingHtml
+  </h1>
+  <p
+    class="text-base lg:text-2xl font-normal max-lg:mt-1.5 lg:max-w-90 lg:mt-35.5 lg:ml-150 xl:ml-224.5 order-2 lg:order-3"
+    data-i18n="hero.desc"
+  >
+    @@tab.description
+  </p>
+  <div class="order-3 lg:order-2 max-lg:mt-10">
+    <!-- Button inlined: nested @@include args cannot contain @@ tokens (plugin regex: {[^@]*}) -->
+    <a
+      href="@@tab.buttonHref"
+      class="btn-group group overflow-hidden bg-white border border-gray-200 text-sm md:text-base font-medium text-black py-1 ps-1 lg:ps-3 pe-1 inline-flex items-center lg:gap-3 rounded-full transition-all duration-300"
+    >
+      <span class="relative inline-block overflow-hidden mx-4">
+        <span
+          class="inline-block group-hover:translate-y-[-200%] transition-all duration-500 ease-in-out"
+          >@@tab.buttonText</span
+        >
+        <span
+          class="absolute top-0 start-0 inline-block translate-y-[200%] group-hover:translate-y-0 transition-all duration-500 ease-in-out"
+          >@@tab.buttonText</span
+        >
+      </span>
+      <span
+        class="relative flex items-center justify-center size-10 rounded-full bg-black group-hover:bg-gray-300 transition-colors duration-500 overflow-hidden rtl:scale-x-[-1]"
+      >
+        <span
+          class="absolute inset-0 m-auto size-0 transition-all bg-gray-300 group-hover:size-10 rounded-full"
+        ></span>
+        <i
+          class="size-4 lg:size-4.5 flex items-center justify-center transition-all duration-500 group-hover:translate-x-[200%] group-hover:-translate-y-[200%]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 256 256"
+            fill="currentColor"
+            class="size-full text-white"
+          >
+            <path
+              d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"
+            ></path>
+          </svg>
+        </i>
+        <i
+          class="size-4.5 lg:size-5 absolute flex items-center justify-center -translate-x-[200%] translate-y-[200%] group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 256 256"
+            fill="currentColor"
+            class="size-full text-black"
+          >
+            <path
+              d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"
+            ></path>
+          </svg>
+        </i>
+      </span>
+    </a>
+  </div>
+</div>
+<div class="mt-12 border-y border-gray-300">
+  <ul
+    class="flex gap-6 md:gap-14.5 [&_p]:text-sm [&_p]:font-normal overflow-x-auto pt-0.5 list-none"
+  >
+    <!-- prettier-ignore -->
+    @@include("../components/helpers/utilities/item-feature.html", {
+      "itemFeature": {
+        "dataVideo": "hero.mp4",
+        "headingEn": "Built for Trade <br />Design for Growth",
+        "headingAr": "بُنيت للتجارة <br />صُممت للنمو",
+        "borderClass": "border-primary-glowgreen",
+        "textClass": "text-white",
+        "iconSize": "38",
+        "iconPath": "M176,72a71.5,71.5,0,0,0-7.76.43,91.77,91.77,0,0,0-21.62-25.11C108.78,16.79,57.05,23.77,54.87,24.08a8,8,0,0,0-3.31,14.58c17.5,11.66,25.51,31,28.85,49.74A72,72,0,1,0,142,207.5,72,72,0,1,0,176,72ZM76,39.37c16.67.72,41.24,4.78,60.64,20.48a75.28,75.28,0,0,1,15,16.4A72.2,72.2,0,0,0,121.9,96.5a71.46,71.46,0,0,0-25.23-8C93.54,68.59,86.56,52,76,39.37ZM88,216a56,56,0,0,1-5.76-111.7,176.49,176.49,0,0,1-1,31.08c-7.58-1.43-11.35-4.85-11.55-5a8,8,0,0,0-11.32,11.32C59.4,142.71,69.2,152,87.92,152h.25c18.66-.05,28.43-9.28,29.49-10.33a8,8,0,0,0-11.32-11.32,22.31,22.31,0,0,1-8.93,4.44A190.36,190.36,0,0,0,98.34,105,56,56,0,0,1,88,216Zm57-99.89a72.27,72.27,0,0,0-9.82-10.42,56.15,56.15,0,0,1,24.22-15.16A110.84,110.84,0,0,1,167,118.88c-6.09-1.6-9.16-4.37-9.33-4.54A8,8,0,0,0,145,116.11ZM176,200a55.76,55.76,0,0,1-24.69-5.73,71.83,71.83,0,0,0,2.5-63.42A47.47,47.47,0,0,0,175.67,136H176c18.77,0,28.6-9.28,29.66-10.34a8,8,0,0,0-11.32-11.32c-.19.19-3.84,3.49-11.15,5A131.66,131.66,0,0,0,175.7,88h.3a56,56,0,0,1,0,112Z",
+        "i18nKey": "tab.1",
+        "text": "An Integrated Food Trade & Logistics Hub in Abu Dhabi"
+      }
+    })
+    @@include("../components/helpers/utilities/item-feature.html", {
+      "itemFeature": {
+        "dataVideo": "hero-2.mp4",
+        "headingEn": "Powering Efficient <br />Trade Across Borders",
+        "headingAr": "تمكين تجارة <br />فعّالة عبر الحدود",
+        "borderClass": "border-transparent",
+        "textClass": "text-white/50",
+        "iconSize": "50",
+        "iconPath": "M236.4,70.65,130.2,40.31a8,8,0,0,0-3.33-.23L21.74,55.1A16.08,16.08,0,0,0,8,70.94V185.06A16.08,16.08,0,0,0,21.74,200.9l105.13,15A8.47,8.47,0,0,0,128,216a7.85,7.85,0,0,0,2.2-.31l106.2-30.34A16.07,16.07,0,0,0,248,170V86A16.07,16.07,0,0,0,236.4,70.65ZM96,120H80V62.94l40-5.72V198.78l-40-5.72V136H96a8,8,0,0,0,0-16ZM24,70.94l40-5.72V120H48a8,8,0,0,0,0,16H64v54.78l-40-5.72ZM136,197.39V58.61L232,86V170Z",
+        "i18nKey": "tab.2",
+        "text": "Powering efficient trade across borders"
+      }
+    })
+    @@include("../components/helpers/utilities/item-feature.html", {
+      "itemFeature": {
+        "dataVideo": "hero-3.mp4",
+        "headingEn": "Finest Wholesale <br />Food Trading Platform",
+        "headingAr": "أرقى منصة <br />لتجارة الغذاء بالجملة",
+        "borderClass": "border-transparent",
+        "textClass": "text-white/50",
+        "iconSize": "50",
+        "iconPath": "M240,184h-8V57.9l9.67-2.08a8,8,0,1,0-3.35-15.64l-224,48A8,8,0,0,0,16,104a8.16,8.16,0,0,0,1.69-.18L24,102.47V184H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM40,99,216,61.33V184H192V128a8,8,0,0,0-8-8H72a8,8,0,0,0-8,8v56H40Zm136,53H80V136h96ZM80,168h96v16H80Z",
+        "i18nKey": "tab.3",
+        "text": "Finest wholesale food trading & logistics platform"
+      }
+    })
+  </ul>
+</div>

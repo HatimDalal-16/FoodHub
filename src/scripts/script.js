@@ -91,6 +91,14 @@ console.log("force rebuild", Date.now());
 const tabs = document.querySelectorAll('.tab');
 const video = document.querySelector('video');
 const videoSource = document.querySelector('video source');
+const heroHeading = document.getElementById('hero-heading');
+
+function applyTabHeading(tab) {
+    if (!heroHeading || !tab.dataset.heading) return;
+    const lang = document.documentElement.getAttribute('lang') || 'en';
+    heroHeading.innerHTML = lang === 'ar' ? tab.dataset.headingAr : tab.dataset.heading;
+}
+
 tabs.forEach(tab => {
     tab.addEventListener('click', () => {
         // Skip if this tab is already active (has full white text)
@@ -105,6 +113,9 @@ tabs.forEach(tab => {
         // Make clicked tab full white with active border
         tab.classList.add('text-white', 'border-primary-glowgreen');
         tab.classList.remove('text-white/50', 'border-transparent');
+
+        // Update heading to match active tab
+        applyTabHeading(tab);
 
         // Fade out video
         video.classList.add('opacity-0');
@@ -141,9 +152,9 @@ gsap.to(".vision-right", {
   ease: "power3.out",
   scrollTrigger: {
     trigger: ".vision-wrap",
-    start: "top 90%",   
-    end: "top 20%",     
-    scrub: 1,           
+    start: "top 90%",
+    end: "top 20%",
+    scrub: 1,
   }
 });
 
@@ -372,9 +383,10 @@ if (menuToggle && mobileMenu && mobileMenuBackdrop) {
 
   // ── Data storage ──────────────────────────────────────────────────────────
   let features = [];
-  let borderRingsXYZ = []; 
-  let dotsXYZ = [];        
-  let gridLatXYZ = [];     
+  let borderRingsXYZ = [];
+  let dotsXYZ = [];
+  let uaeDotsXYZ = [];
+  let gridLatXYZ = [];
   let gridLonXYZ = [];
 
   function buildGeometry() {
@@ -387,6 +399,31 @@ if (menuToggle && mobileMenu && mobileMenuBackdrop) {
           if (onLand(lon, lat, f)) {
             dotsXYZ.push(toXYZ(lat * DEG, lon * DEG));
             break;
+          }
+        }
+      }
+    }
+    // UAE highlighted dots — denser grid, drawn separately in cyan
+    uaeDotsXYZ = [];
+    const uaeFeatures = features.filter(f => {
+      const p = f.properties || {};
+      return (
+        p.ISO_A3 === 'ARE' || p.iso_a3 === 'ARE' ||
+        p.name === 'United Arab Emirates' ||
+        p.NAME === 'United Arab Emirates' ||
+        p.ADMIN === 'United Arab Emirates' ||
+        p.admin === 'United Arab Emirates'
+      );
+    });
+    if (uaeFeatures.length) {
+      const UAE_STEP = 0.5;
+      for (let lat = -85; lat <= 85; lat += UAE_STEP) {
+        for (let lon = -180; lon < 180; lon += UAE_STEP) {
+          for (const f of uaeFeatures) {
+            if (onLand(lon, lat, f)) {
+              uaeDotsXYZ.push(toXYZ(lat * DEG, lon * DEG));
+              break;
+            }
           }
         }
       }
@@ -498,6 +535,17 @@ if (menuToggle && mobileMenu && mobileMenuBackdrop) {
       ctx.beginPath();
       ctx.arc(cx + p[0] * R, cy - p[1] * R, 0.5 + p[2] * 0.6, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(${BASE}, ${alpha})`;
+      ctx.fill();
+    });
+
+    // UAE — cyan dots on top
+    uaeDotsXYZ.forEach(pt => {
+      const p = rotate(pt);
+      if (p[2] < 0.1) return;
+      const alpha = 0.4 + p[2] * 0.6;
+      ctx.beginPath();
+      ctx.arc(cx + p[0] * R, cy - p[1] * R, 1.0 + p[2] * 0.5, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(20, 184, 231, ${alpha})`;
       ctx.fill();
     });
 
@@ -669,6 +717,10 @@ if (menuToggle && mobileMenu && mobileMenuBackdrop) {
       const t = TRANSLATIONS_HTML[el.dataset.i18nHtml];
       if (t && t[lang] !== undefined) el.innerHTML = t[lang];
     });
+
+    // Re-apply active tab heading after language switch
+    const activeTab = document.querySelector('.tab.text-white');
+    if (activeTab) applyTabHeading(activeTab);
 
     initSliders(lang === 'ar');
   }
