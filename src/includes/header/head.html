@@ -1,6 +1,32 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>FoodHub</title>
+
+<!-- Preconnect to external origins so fonts/icons start downloading earlier -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+
+<!-- Hide body until fonts are ready to prevent FOUC / layout shift -->
+<style>
+  body { visibility: hidden; opacity: 0; }
+  html.fonts-ready body {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+  }
+</style>
+<script>
+  (function () {
+    function reveal() {
+      document.documentElement.classList.add('fonts-ready');
+    }
+    document.fonts.ready.then(reveal);
+    // Safety fallback — never stay hidden longer than 2.5s on slow connections
+    setTimeout(reveal, 2500);
+  })();
+</script>
+
 <link
   rel="stylesheet"
   type="text/css"

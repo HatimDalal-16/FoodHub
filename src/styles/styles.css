@@ -35,6 +35,12 @@
   body {
     @apply font-body;
   }
+  /* Reveal transition paired with the fonts-ready inline script in head.html */
+  html.fonts-ready body {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+  }
   h1,
   h2,
   h3,
