@@ -82,12 +82,18 @@
     @apply block;
   }
 
+  .full-bleed {
+    width: 100vw;
+    margin-inline-start: calc(50% - 50vw);
+    margin-inline-end: calc(50% - 50vw);
+  }
+
   /* Slick Slider Gutters */
-  /* .service-slider .slick-list,
+  .service-slider .slick-list,
   .news-card-slider .slick-list,
   .small-card-slider .slick-list {
     overflow: visible;
-  } */
+  }
 
   .service-slider .slick-slide {
     margin: 0 12.5px;
