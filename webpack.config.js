@@ -8,6 +8,7 @@ const isDev = process.env.NODE_ENV !== "production";
 module.exports = {
   entry: {
     main: ["./src/scripts/script.js", "./src/styles/styles.css"],
+    globe: "./src/scripts/globe.js",
   },
 
   cache: false,
