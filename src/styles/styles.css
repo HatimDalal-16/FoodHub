@@ -33,7 +33,7 @@
 
 @layer base {
   body {
-    @apply font-body;
+    @apply font-body overflow-x-hidden;
   }
   /* Reveal transition paired with the fonts-ready inline script in head.html */
   html.fonts-ready body {
@@ -83,6 +83,12 @@
   }
 
   /* Slick Slider Gutters */
+  /* .service-slider .slick-list,
+  .news-card-slider .slick-list,
+  .small-card-slider .slick-list {
+    overflow: visible;
+  } */
+
   .service-slider .slick-slide {
     margin: 0 12.5px;
   }
