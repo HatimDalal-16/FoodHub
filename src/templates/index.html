@@ -8,6 +8,9 @@
     @@include("../includes/header/header.html")
     <main>
       <section class="relative overflow-x-hidden z-1">
+        <div
+          class="absolute z-10 top-50 md:top-20 lg:top-27.5 -inset-e-20 md:-inset-e-30 lg:-inset-e-41.5 w-62.5 md:w-87.5 lg:w-129 aspect-515/784 bg-[url('../images/brand-line-elements-2.png')] pointer-events-none bg-cover bg-center"
+        ></div>
         <!-- prettier-ignore -->
         <div>
           <!-- prettier-ignore -->
@@ -17,7 +20,7 @@
           <!-- prettier-ignore -->
           @@include("../includes/sections/section-tab.html", { "tab": { "id": "tab-3", "videoSrc": "hero-3.mp4", "headingHtml": "Finest Wholesale Food <br />Trading Platform", "description": "Step into one of the most comprehensive food trade zones in the Middle East", "buttonHref": "#", "buttonText": "Join the Hub" } })
         </div>
-        <div class="container relative z-20 text-white pb-23">
+        <div class="container relative z-20 text-white">
           <div class="mt-12 border-y border-gray-300">
             <ul
               class="flex gap-6 md:gap-14.5 [&_p]:text-sm [&_p]:font-normal overflow-x-auto pt-0.5 list-none"
@@ -28,6 +31,15 @@
                 @@include("../includes/components/helpers/utilities/item-feature.html", { "itemFeature": { "target": "tab-3", "iconSize": "50", "iconPath": "M240,184h-8V57.9l9.67-2.08a8,8,0,1,0-3.35-15.64l-224,48A8,8,0,0,0,16,104a8.16,8.16,0,0,0,1.69-.18L24,102.47V184H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM40,99,216,61.33V184H192V128a8,8,0,0,0-8-8H72a8,8,0,0,0-8,8v56H40Zm136,53H80V136h96ZM80,168h96v16H80Z", "i18nKey": "tab.3", "text": "Finest wholesale food trading & logistics platform" } })
             </ul>
           </div>
+        </div>
+      </section>
+      <section class="relative z-1 pb-[2.975rem] lg:pb-23">
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+          <div
+            class="inline-block z-10 absolute -top-5 md:-top-7.5 lg:-top-10 -inset-s-15 md:-inset-s-25 lg:-inset-s-36 w-75 md:w-112.5 lg:w-163.5 aspect-654/905 bg-[url(../images/brand-line-elements-1.png)] bg-cover bg-center mix-blend-overlay opacity-66"
+          ></div>
+        </div>
+        <div class="container relative z-20 text-white">
           <div class="mt-10 lg:mt-6.5">
             @@include("../includes/components/helpers/section-nav.html", {
             "number": "(01)", "title": "&#64;About Us", "color": "text-white" })
@@ -64,16 +76,17 @@
               { "button": { "href": "#", "text": "Explore More" } })
             </div>
           </div>
-          <!-- </div> -->
         </div>
       </section>
 
       <section
         class="bg-white relative z-20 overflow-visible lg:overflow-hidden"
       >
-        <div
-          class="min-w-86.5 rtl:-scale-x-100 w-[72.13541666666667vw] max-w-346 aspect-1385/867 bg-[url(../images/background-news.svg)] bg-cover bg-center inline-block absolute top-[-9.1145vw] inset-e-[-11.5625vw] pointer-events-none"
-        ></div>
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+          <div
+            class="min-w-86.5 rtl:-scale-x-100 w-[72.13541666666667vw] max-w-346 aspect-1385/867 bg-[url(../images/background-news.svg)] bg-cover bg-center inline-block absolute top-[-9.1145vw] inset-e-[-11.5625vw] pointer-events-none"
+          ></div>
+        </div>
         <div
           class="absolute rtl:-scale-x-100 top-[70%] lg:top-[50%] inset-s-0 w-50 md:w-60 lg:w-73 aspect-293/920 bg-[url(../images/brand-line-elements-b.png)] bg-cover bg-center pointer-events-none"
         ></div>
