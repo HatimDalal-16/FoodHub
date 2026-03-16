@@ -32,6 +32,9 @@
 }
 
 @layer base {
+  html {
+    overflow-x: hidden;
+  }
   body {
     @apply font-body overflow-x-hidden;
   }
